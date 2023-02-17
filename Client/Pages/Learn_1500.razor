@@ -1,0 +1,26 @@
+﻿@page "/learn_1500"
+
+<h3>
+	One Way Binding: @(message)
+</h3>
+
+<hr />
+
+<h3>
+	Two Way Binding:
+	<br />
+	<input type="text" class="form-control" @bind="message" />
+</h3>
+
+<h3>
+	Two Way Binding:
+	<br />
+	<input type="text" class="form-control" @bind-value="message" />
+</h3>
+
+<hr />
+
+@code
+{
+	private string message = "Hello, World!";
+}

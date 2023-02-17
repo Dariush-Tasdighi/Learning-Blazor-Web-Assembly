@@ -1,0 +1,196 @@
+﻿@page "/learn_2300"
+
+@using Dtat;
+
+<div class="row">
+	<div class="col">
+		<h5>
+			Add New Todo
+		</h5>
+
+		Title
+		<br />
+		<input type="text" class="form-control" @bind="NewTodoItemTitle" @bind:event="onchange" />
+		<br />
+		<button type="button" class="btn btn-primary" @onclick="AddNewTodoItem">Add Todo Item</button>
+
+		<br />
+		<br />
+
+		<h6>
+			Not Completed Item Count: @(GetNotCompletedItemCount())
+		</h6>
+	</div>
+</div>
+
+<hr />
+
+<div class="row">
+	<div class="col">
+		<h3>
+			Todos
+		</h3>
+
+		<ul>
+			@if (Todos is not null)
+			{
+				foreach (var item in Todos)
+				{
+					<li>
+						<input type="checkbox" @bind="item.IsDone" />
+						@(item.Title)
+					</li>
+				}
+			}
+		</ul>
+
+		<hr />
+
+		<ul>
+			@if (Todos is not null)
+			{
+				foreach (var item in Todos)
+				{
+					<li>
+						@*<button type="button" class="btn btn-danger btn-sm" @onclick="Delete(item)">x</button>*@
+						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(item)">x</button>
+						@*<button type="button" class="btn btn-danger btn-sm" @onclick="(e) => Delete(e, item)">x</button>*@
+
+						<input type="checkbox" @bind="item.IsDone" />
+						@(item.Title)
+					</li>
+				}
+			}
+		</ul>
+
+		<hr />
+
+		<ul>
+			@if (Todos is not null)
+			{
+				for (var index = 0; index <= Todos.Count - 1; index++)
+				{
+					var item = Todos[index];
+
+					<li>
+						[@(index + 1)]
+						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(item)">x</button>
+						<input type="checkbox" @bind="item.IsDone" />
+						@(item.Title)
+					</li>
+				}
+			}
+		</ul>
+
+		<hr />
+
+		<h5>
+			دستور ذیل کار نمی‌کند
+		</h5>
+
+		<ul>
+			@if (Todos is not null)
+			{
+				for (var index = 0; index <= Todos.Count - 1; index++)
+				{
+					<li>
+						[@(index + 1)]
+						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(Todos[index])">x</button>
+						<input type="checkbox" @bind="Todos[index].IsDone" />
+						@(Todos[index].Title)
+					</li>
+				}
+			}
+		</ul>
+	</div>
+</div>
+
+@code
+{
+	/// <summary>
+	/// Similar to OnLoad in Windows Forms Applications
+	/// </summary>
+	protected override void OnInitialized()
+	{
+		Todos = new();
+
+		for (var index = 1; index <= 10; index++)
+		{
+			var item =
+				new ViewModels.TodoItemViewModel
+					{
+						IsDone = (index % 2 == 0),
+						Title = $"Title {index}",
+					};
+
+			Todos.Add(item: item);
+		}
+	}
+
+	private string? NewTodoItemTitle { get; set; }
+
+	private List<ViewModels.TodoItemViewModel>? Todos { get; set; }
+
+	// Bad Practice
+	//private List<ViewModels.TodoItemViewModel> _todos = new List<ViewModels.TodoItemViewModel>();
+
+	private void AddNewTodoItem()
+	{
+		NewTodoItemTitle =
+			NewTodoItemTitle.Fix();
+
+		if (NewTodoItemTitle == null)
+		{
+			return;
+		}
+
+		if (Todos == null)
+		{
+			Todos = new List
+				<ViewModels.TodoItemViewModel>();
+		}
+
+		bool hasAny =
+			Todos
+			.Where(current => current.Title != null &&
+				current.Title.ToLower() == NewTodoItemTitle.ToLower())
+			.Any();
+
+		if (hasAny)
+		{
+			return;
+		}
+
+		var newTodoItem =
+			new ViewModels.TodoItemViewModel()
+				{
+					IsDone = false,
+					Title = NewTodoItemTitle,
+				};
+
+		Todos.Add(item: newTodoItem);
+	}
+
+	private void Delete(ViewModels.TodoItemViewModel item)
+	{
+		if (Todos is not null)
+		{
+			Todos.Remove(item: item);
+		}
+	}
+
+	private int GetNotCompletedItemCount()
+	{
+		if (Todos is null)
+		{
+			return 0;
+		}
+
+		var result =
+			Todos
+			.Where(current => current.IsDone == false)
+			.Count();
+
+		return result;
+	}
+}

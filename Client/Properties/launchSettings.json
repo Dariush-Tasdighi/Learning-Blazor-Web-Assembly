@@ -1,0 +1,16 @@
+{
+	"profiles": {
+		"https": {
+			"launchBrowser": true,
+			"dotnetRunMessages": true,
+
+			"commandName": "Project",
+			"applicationUrl": "https://localhost:6001",
+			"inspectUri": "{wsProtocol}://{url.hostname}:{url.port}/_framework/debug/ws-proxy?browser={browserInspectUri}",
+
+			"environmentVariables": {
+				"ASPNETCORE_ENVIRONMENT": "Development"
+			}
+		}
+	}
+}

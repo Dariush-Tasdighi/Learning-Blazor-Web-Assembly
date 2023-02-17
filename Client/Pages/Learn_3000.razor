@@ -1,0 +1,69 @@
+﻿@page "/learn_3000"
+
+<div>
+	@if (Index == 1)
+	{
+		<div>
+			@(Index)
+		</div>
+	}
+</div>
+
+@*
+	<div>
+		@if (Index == 1)
+		{
+			Hello, World!
+		}
+	</div>
+*@
+
+<hr />
+
+<div>
+	@if (Index == 1)
+	{
+		<span>Hello, World (1)!</span>
+	}
+</div>
+
+<hr />
+
+<div>
+	@if (Index == 1)
+	{
+		<text>Hello, World (2)!</text>
+	}
+</div>
+
+<hr />
+
+<div>
+	@if (Index == 1)
+	{
+		@:Hello, World (3)!
+	}
+</div>
+
+<hr />
+
+<div>
+	@if (Index == 1)
+	{
+		<text>Hello, <b>World</b> <i>(4)</i>!</text>
+	}
+</div>
+
+<hr />
+
+<div>
+	@if (Index == 1)
+	{
+		@:Hello, <b>World</b> <i>(4)</i>!
+	}
+</div>
+
+@code
+{
+	private int Index { get; set; } = 1;
+}

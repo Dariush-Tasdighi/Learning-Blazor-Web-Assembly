@@ -1,0 +1,17 @@
+﻿@page "/TableOfContents"
+
+<h3>
+	Table of Contents
+</h3>
+
+@for (var index = 1000; index <= 5900; index += 100)
+{
+	<a href="/learn_@(index)">Learn @(index)</a>
+	<br />
+}
+
+<hr />
+
+@code
+{
+}

@@ -1,0 +1,49 @@
+﻿@page "/learn_1900"
+
+<h3>
+	@(message)
+</h3>
+
+<hr />
+
+<button type="button" class="btn btn-primary" @onclick="DoSomething1">Do Something (1)!</button>
+<button type="button" class="btn btn-primary" @onclick="() => DoSomething2()">Do Something (2)!</button>
+<button type="button" class="btn btn-primary" @onclick="(e) => DoSomething3(e)">Do Something (3)!</button>
+
+<hr />
+
+<h3>
+	References:
+</h3>
+
+<ul>
+	<li>
+		<a href="https://learn.microsoft.com/en-us/aspnet/core/blazor/components/data-binding?view=aspnetcore-7.0">Microsoft</a>
+	</li>
+</ul>
+
+<hr />
+
+@code
+{
+	private string message = "Hello, World!";
+
+	private void DoSomething1()
+	{
+		message =
+			"Do Something (1) Invoked!";
+	}
+
+	private void DoSomething2()
+	{
+		message =
+			"Do Something (2) Invoked!";
+	}
+
+	private void DoSomething3
+		(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
+	{
+		message =
+			$"Do Something (3) Invoked! - {args.ScreenX} - {args.ScreenY} - {args.Type}";
+	}
+}

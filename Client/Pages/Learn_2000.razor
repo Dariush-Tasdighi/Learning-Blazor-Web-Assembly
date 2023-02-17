@@ -1,0 +1,17 @@
+﻿@page "/learn_2000"
+
+<h3>
+	@(Message)
+</h3>
+
+<h3>
+	<input type="text" class="form-control" @bind="Message" @bind:event="oninput" />
+</h3>
+
+<h3>
+	<input type="text" class="form-control" @bind="Message" @bind:event="oninput" />
+</h3>
+
+<h3>
+	<button type="button" class="btn btn-primary" @onclick="DoSomething">Do Something!</button>
+</h3>

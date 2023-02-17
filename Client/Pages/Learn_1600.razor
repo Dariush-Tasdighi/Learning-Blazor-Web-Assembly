@@ -1,0 +1,20 @@
+﻿@page "/learn_1600"
+
+<h3>
+	@(message)
+</h3>
+
+<hr />
+
+<h3>
+	<input type="text" class="form-control" @bind="message" @bind:event="onchange" />
+</h3>
+
+<h3>
+	<input type="text" class="form-control" @bind="message" @bind:event="onchange" />
+</h3>
+
+@code
+{
+	private string message = "Hello, World!";
+}

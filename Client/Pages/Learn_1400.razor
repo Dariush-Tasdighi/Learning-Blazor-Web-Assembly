@@ -1,0 +1,24 @@
+﻿@page "/learn_1400"
+
+<div>
+	@(message)
+</div>
+
+@*
+	<div>
+		@(Html.Raw(message))
+	</div>
+*@
+
+<hr />
+
+<div>
+	@((MarkupString)message)
+</div>
+
+<hr />
+
+@code
+{
+	private string message = "<b><i>Hello, World!</i><b>";
+}

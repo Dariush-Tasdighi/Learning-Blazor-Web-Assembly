@@ -1,0 +1,21 @@
+﻿@page "/learn_1100"
+
+<h1>
+	One Way Binding!
+</h1>
+
+<h3>
+	Please download file: @fileName
+</h3>
+
+<hr />
+
+<h3>
+	Please download file: @(fileName).png
+	Please download file: @*@fileName.png*@
+</h3>
+
+@code
+{
+	private string fileName = "Googooli";
+}

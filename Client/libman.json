@@ -1,0 +1,42 @@
+{
+	"version": "1.0",
+	"defaultProvider": "cdnjs",
+	"libraries": [
+		{
+			"library": "bootstrap@5.2.3",
+			"destination": "wwwroot/lib/bootstrap/"
+		},
+		{
+			"library": "bootstrap-icons@1.10.3",
+			"destination": "wwwroot/lib/bootstrap-icons/"
+		},
+		{
+			"library": "bootstrap-iconpicker@1.10.0",
+			"destination": "wwwroot/lib/bootstrap-iconpicker/"
+		},
+		{
+			"library": "jquery@3.6.3",
+			"destination": "wwwroot/lib/jquery/"
+		},
+		{
+			"library": "jquery-validate@1.19.5",
+			"destination": "wwwroot/lib/jquery-validate/"
+		},
+		{
+			"library": "jquery-validation-unobtrusive@4.0.0",
+			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
+		},
+		{
+			"library": "tinymce@6.3.1",
+			"destination": "wwwroot/lib/tinymce/"
+		},
+		{
+			"library": "flag-icon-css@6.6.6",
+			"destination": "wwwroot/lib/flag-icon-css/"
+		},
+		{
+			"library": "popper.js@2.11.6",
+			"destination": "wwwroot/lib/popper.js/"
+		}
+	]
+}

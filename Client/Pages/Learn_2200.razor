@@ -1,0 +1,38 @@
+﻿@page "/learn_2200"
+
+<h3>
+	@(message)
+</h3>
+
+<hr />
+
+<h3>
+	<input type="text" class="form-control" @bind="message" @bind:event="oninput" />
+</h3>
+
+<h3>
+	<input type="text" class="form-control" @bind="message" @bind:event="oninput" />
+</h3>
+
+<h3>
+	<button type="button" class="btn btn-primary" @onclick="DoSomething">Do Something!</button>
+</h3>
+
+<hr />
+
+<h3>
+	Use [code] instead of [functions]! [functions] is old!
+</h3>
+
+<hr />
+
+@functions
+{
+	private string message = "Hello, World!";
+
+	private void DoSomething()
+	{
+		message =
+			"I'm Dariush Tasdighi";
+	}
+}

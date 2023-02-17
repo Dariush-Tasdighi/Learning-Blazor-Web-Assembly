@@ -1,0 +1,124 @@
+﻿@page "/learn_2800"
+
+<h1>
+	Basket
+</h1>
+
+<div class="row">
+	<div class="col table-responsive">
+
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+				<tr>
+					<th>
+						@(Resources.DataDictionary.RowNumber)
+					</th>
+					<th>
+						@(Resources.DataDictionary.Name)
+					</th>
+					<th>
+						@(Resources.DataDictionary.Price)
+					</th>
+					<th>
+						@(Resources.DataDictionary.Count)
+					</th>
+					<th>
+					</th>
+					<th>
+						@(Resources.DataDictionary.SubTotal)
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				@if (Items is not null)
+				{
+					for (var index = 0; index <= Items.Count - 1; index++)
+					{
+						var item = Items[index];
+
+						<tr>
+							<td>
+								@(index + 1)
+							</td>
+							<td>
+								@(item.ProductName)
+							</td>
+							<td>
+								@(item.ProductPrice)
+							</td>
+							<td>
+								@(item.ProductCount)
+							</td>
+							<td>
+								<button type="button" class="btn btn-primary btn-sm" @onclick="() => item.Plus()">+</button>
+								<button type="button" class="btn btn-primary btn-sm" @onclick="() => item.Minus()">-</button>
+							</td>
+							<td>
+								@(item.GetSubTotal())
+							</td>
+						</tr>
+					}
+				}
+
+				<tr>
+					<td colspan="5">
+					</td>
+					<td>
+						@(GetTotal())
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+</div>
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		Items = new();
+
+		for (var index = 1; index <= 5; index++)
+		{
+			var item =
+				new ViewModels.BasketItemViewModel
+					{
+						ProductCount = 1,
+						ProductPrice = index * 100,
+						ProductName = $"Product {index}",
+					};
+
+			Items.Add(item: item);
+		}
+	}
+
+	private List<ViewModels.BasketItemViewModel>? Items { get; set; }
+
+	private int GetTotal()
+	{
+		if (Items is null)
+		{
+			return 0;
+		}
+
+		// Solution (1)
+		//var result = 0;
+
+		//foreach (var item in Items)
+		//{
+		//	result +=
+		//		item.GetSubTotal();
+		//}
+		// /Solution (1)
+
+		// Solution (2)
+		var result =
+			Items
+			.Sum(current => current.GetSubTotal());
+		// /Solution (2)
+
+		return result;
+	}
+}
