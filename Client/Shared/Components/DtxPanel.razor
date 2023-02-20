@@ -1,0 +1,36 @@
+﻿<CascadingValue Value="this">
+	Counter: @(ParentCounter)
+	<button type="button" class="btn btn-primary" @onclick="IncreaseChildCounter">Increase Child (Header) Counter</button>
+
+	<hr />
+
+	@(ChildContent)
+</CascadingValue>
+
+@code
+{
+
+	public int ParentCounter { get; set; }
+
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
+
+	public DtxPanelHeader PanelHeader { get; set; }
+
+	private void IncreaseChildCounter()
+	{
+		if (PanelHeader != null)
+		{
+			PanelHeader.ChildCounter++;
+		}
+	}
+
+	public void IncreaseParentCounter()
+	{
+		ParentCounter++;
+
+		// دستور ذیل خیلی مهم است
+		StateHasChanged();
+	}
+
+}

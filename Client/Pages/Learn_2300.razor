@@ -152,7 +152,7 @@
 
 		bool hasAny =
 			Todos
-			.Where(current => current.Title != null &&
+			.Where(predicate: current => current.Title != null &&
 				current.Title.ToLower() == NewTodoItemTitle.ToLower())
 			.Any();
 
@@ -188,7 +188,7 @@
 
 		var result =
 			Todos
-			.Where(current => current.IsDone == false)
+			.Where(predicate: current => current.IsDone == false)
 			.Count();
 
 		return result;

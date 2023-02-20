@@ -1,0 +1,38 @@
+﻿@page "/learn_3500"
+
+<h3>
+	@(Message)
+</h3>
+
+<hr />
+
+<DtxButton1></DtxButton1>
+
+<hr />
+
+<DtxButton1 Caption="Caption 1"></DtxButton1>
+
+<hr />
+
+<DtxButton1 Caption="Caption 2" OnClick="DtxButto1Clicked2"></DtxButton1>
+
+<hr />
+
+<DtxButton1 Caption="Caption 3" OnClick="() => DtxButto1Clicked3()"></DtxButton1>
+
+<hr />
+
+@code
+{
+	public string? Message { get; set; }
+
+	private void DtxButto1Clicked2()
+	{
+		Message = "[Caption 2] Button Clicked!";
+	}
+
+	private void DtxButto1Clicked3()
+	{
+		Message = "[Caption 3] Button Clicked!";
+	}
+}

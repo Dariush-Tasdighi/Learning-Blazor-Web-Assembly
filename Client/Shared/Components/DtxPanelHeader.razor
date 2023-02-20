@@ -1,0 +1,43 @@
+﻿<h3>
+	@(ChildContent)
+	Child Counter: @(ChildCounter)
+	<button type="button" class="btn btn-primary" @onclick="IncreaseParentCounter">Increase Parent (Panel) Counter</button>
+</h3>
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		if (Parent == null)
+		{
+			string errorMessage =
+				$"{ nameof(DtxPanelHeader) } should be use inside a { nameof(DtxPanel) }";
+
+			throw new System.ArgumentNullException
+				(paramName: nameof(Parent), message: errorMessage);
+		}
+
+		Parent.PanelHeader = this;
+
+		base.OnInitialized();
+	}
+
+	[CascadingParameter]
+	private DtxPanel Parent { get; set; }
+
+	public int ChildCounter { get; set; }
+
+	[Parameter]
+	public RenderFragment ChildContent { get; set; }
+
+	private void IncreaseParentCounter()
+	{
+		// با تاخیر کار می‌کند
+		//Parent.ParentCounter++;
+
+		// با تاخیر کار می‌کند، مگر آن‌که از دستور ذیل در والد استفاده کنیم
+		// StateHasChanged();
+		Parent.IncreaseParentCounter();
+	}
+
+}

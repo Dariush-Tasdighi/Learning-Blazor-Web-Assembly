@@ -1,0 +1,42 @@
+﻿@page "/learn_3400"
+
+<ConvertDollarsToRials3 />
+
+<hr />
+
+<ConvertDollarsToRials3 OnRialsChanged="(e) => RialsChanged1(e)" />
+
+@if (rials > 0)
+{
+	<br />
+	@(rials.ToString(format: "#,##0"))
+}
+
+<hr />
+
+<ConvertDollarsToRials3 OnRialsChanged="RialsChanged2" />
+
+@if(string.IsNullOrWhiteSpace(value: message) == false)
+{
+	<br />
+	@(message)
+}
+
+<hr />
+
+@code
+{
+	private long rials;
+
+	private string? message;
+
+	private void RialsChanged1(long newRials)
+	{
+		rials = newRials;
+	}
+
+	private void RialsChanged2()
+	{
+		message = "Rials Changed!";
+	}
+}

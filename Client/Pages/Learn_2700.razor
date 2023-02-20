@@ -116,17 +116,21 @@
 	private int GetSubTotal(ViewModels.BasketItemViewModel item)
 	{
 		// Solution (1)
-		//return item.ProductPrice * item.ProductCount;
+		//return (item.ProductPrice * item.ProductCount);
 		// /Solution (1)
 
 		// Solution (2)
+		//return item.ProductPrice * item.ProductCount;
+		// /Solution (2)
+
+		// Solution (3)
 		//var result =
 		//	item.ProductPrice * item.ProductCount;
 
 		//return result;
-		// /Solution (2)
+		// /Solution (3)
 
-		// Solution (3)
+		// Solution (4)
 		var result =
 			item.ProductPrice * item.ProductCount;
 
@@ -135,7 +139,7 @@
 			result =
 				(int)((decimal)(result * 95) / 100);
 		}
-		// /Solution (3)
+		// /Solution (4)
 
 		return result;
 	}

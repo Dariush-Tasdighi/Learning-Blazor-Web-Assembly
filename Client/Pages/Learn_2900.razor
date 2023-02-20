@@ -39,7 +39,7 @@ else
 				</thead>
 
 				<tbody>
-					@for (int index = 0; index <= Items.Count - 1; index++)
+					@for (var index = 0; index <= Items.Count - 1; index++)
 					{
 						var item = Items[index];
 
@@ -143,6 +143,26 @@ else
 
 	//protected override async Task OnInitializedAsync()
 	//{
+	//	Items = new();
+
+	//	for (var index = 1; index <= 5000; index++)
+	//	{
+	//		var item =
+	//			new ViewModels.BasketItemViewModel
+	//				{
+	//					ProductCount = 1,
+	//					ProductPrice = index * 100,
+	//					ProductName = $"Product {index}",
+	//				};
+
+	//		Items.Add(item: item);
+	//	}
+
+	//	await Task.CompletedTask;
+	//}
+
+	//protected override async Task OnInitializedAsync()
+	//{
 	//	await System.Threading.Tasks.Task.Run(() =>
 	//	{
 	//		Items = new();
@@ -190,7 +210,7 @@ else
 		}
 	}
 
-	private List<ViewModels.BasketItemViewModel>? Items{ get; set; }
+	private List<ViewModels.BasketItemViewModel>? Items { get; set; }
 
 	private int GetTotal()
 	{

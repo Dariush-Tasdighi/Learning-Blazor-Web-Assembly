@@ -1,0 +1,21 @@
+﻿<input type="text" @bind="dollars" />
+<button type="button" @onclick="Convert">Convert</button>
+
+@if (rials > 0)
+{
+	@(rials.ToString(format: "#,##0"))
+	@:Rials
+}
+
+@code
+{
+	private long rials;
+
+	private long dollars = 1_000;
+
+	private void Convert()
+	{
+		rials =
+			dollars * 500_000;
+	}
+}

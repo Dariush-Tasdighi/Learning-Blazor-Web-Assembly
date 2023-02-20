@@ -58,7 +58,7 @@ public class BasketItemViewModel : object
 	#region GetSubTotal()
 	public int GetSubTotal()
 	{
-		int result =
+		var result =
 			ProductPrice * ProductCount;
 
 		if (ProductCount > 5)
