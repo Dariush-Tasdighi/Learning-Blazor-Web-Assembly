@@ -79,6 +79,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string Name {
@@ -111,6 +120,15 @@ namespace Resources {
         public static string SubTotal {
             get {
                 return ResourceManager.GetString("SubTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timestamp.
+        /// </summary>
+        public static string Timestamp {
+            get {
+                return ResourceManager.GetString("Timestamp", resourceCulture);
             }
         }
         

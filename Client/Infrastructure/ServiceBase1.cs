@@ -4,7 +4,8 @@ namespace Infrastructure;
 
 public abstract class ServiceBase1 : object
 {
-	public ServiceBase1(System.Net.Http.HttpClient http) : base()
+	public ServiceBase1
+		(System.Net.Http.HttpClient http) : base()
 	{
 		Http = http;
 
@@ -23,8 +24,7 @@ public abstract class ServiceBase1 : object
 
 	//protected System.Text.Json.JsonSerializerOptions JsonOptions { get; set; }
 
-	protected virtual
-		async
+	protected virtual async
 		System.Threading.Tasks.Task<TResponse?>
 		GetAsync<TResponse>(string url, string? query = null)
 	{
@@ -32,10 +32,10 @@ public abstract class ServiceBase1 : object
 
 		try
 		{
-			string requestUri =
+			var requestUri =
 				$"{BaseUrl}/{url}";
 
-			if (string.IsNullOrWhiteSpace(query) == false)
+			if (string.IsNullOrWhiteSpace(value: query) == false)
 			{
 				requestUri =
 					$"{requestUri}?{query}";
@@ -43,9 +43,7 @@ public abstract class ServiceBase1 : object
 
 			response =
 				await
-				Http.GetAsync
-				(requestUri: requestUri)
-				;
+				Http.GetAsync(requestUri: requestUri);
 
 			response.EnsureSuccessStatusCode();
 
@@ -54,20 +52,18 @@ public abstract class ServiceBase1 : object
 				try
 				{
 					// using System.Net.Http.Json;
-					TResponse? result =
+					var result =
 						await
 						response.Content.ReadFromJsonAsync<TResponse>();
 
 					return result;
 				}
-
 				// When content type is not valid
 				catch (System.NotSupportedException)
 				{
 					System.Console.WriteLine
 						(value: "The content type is not supported.");
 				}
-
 				// Invalid JSON
 				catch (System.Text.Json.JsonException)
 				{
@@ -76,17 +72,14 @@ public abstract class ServiceBase1 : object
 				}
 			}
 		}
-
 		catch (System.Net.Http.HttpRequestException ex)
 		{
 			System.Console.WriteLine(value: ex.Message);
 		}
-
 		catch (System.Exception ex)
 		{
 			System.Console.WriteLine(value: ex.Message);
 		}
-
 		finally
 		{
 			//if (response != null)

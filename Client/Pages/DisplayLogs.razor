@@ -1,0 +1,62 @@
+﻿@page "/displaylogs"
+
+@inject Services.LogsService LogsService
+
+<div class="row">
+	<div class="col">
+		<button type="button" class="btn btn-primary" @onclick="Clear">Clear</button>
+	</div>
+</div>
+
+<hr />
+
+<div class="row">
+	<div class="col table-responsive">
+		<table class="table table-bordered table-sm table-striped table-hover">
+
+			<thead>
+				<tr>
+					<th>
+						@(Resources.DataDictionary.RowNumber)
+					</th>
+					<th>
+						@(Resources.DataDictionary.Timestamp)
+					</th>
+					<th>
+						@(Resources.DataDictionary.Message)
+					</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				@for (var index = 0; index <= LogsService.GetLogs().Count - 1; index++)
+				{
+					var item = LogsService.GetLogs()[index];
+
+					<tr>
+						<td>
+							@(index + 1)
+						</td>
+						<td>
+							@(item.Timestamp.ToString(format: "HH:mm:ss"))
+						</td>
+						<td>
+							@(item.Message)
+						</td>
+					</tr>
+				}
+			</tbody>
+
+		</table>
+	</div>
+</div>
+
+<hr />
+
+@code
+{
+	public void Clear()
+	{
+		LogsService.ClearLogs();
+	}
+}

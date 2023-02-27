@@ -1,5 +1,6 @@
 ﻿@page "/learn_3900"
 @page "/alaki/dolaki"
+@page "/learn_3900/Debug"
 
 @inject NavigationManager NavigationManager
 
@@ -66,7 +67,7 @@ Current Page Url: @(NavigationManager.Uri)
 	private void GoToIndexPage2()
 	{
 		NavigationManager.NavigateTo
-		(uri: string.Empty, forceLoad: true);
+			(uri: string.Empty, forceLoad: true);
 	}
 
 	private void GoToSomePage1()

@@ -1,4 +1,5 @@
-﻿namespace Services;
+﻿//namespace Client.Services;
+namespace Services;
 
 public class PostsServiceTemp1 : object
 {

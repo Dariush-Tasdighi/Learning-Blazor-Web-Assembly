@@ -17,8 +17,8 @@ builder.Services.AddScoped
 		var httpClient =
 			new System.Net.Http.HttpClient
 			{
-				BaseAddress =
-					new System.Uri(builder.HostEnvironment.BaseAddress),
+				BaseAddress = new System.Uri
+					(uriString: builder.HostEnvironment.BaseAddress),
 			};
 
 		return httpClient;
@@ -34,16 +34,17 @@ builder.Services.AddScoped
 //	(implementationFactory: current =>
 //	new System.Net.Http.HttpClient
 //	{
-//		BaseAddress =
-//			new System.Uri(builder.HostEnvironment.BaseAddress),
+//		BaseAddress = new System.Uri
+//			(uriString: builder.HostEnvironment.BaseAddress),
 //	});
 
-//builder.Services.AddScoped<Services.PostsServiceTemp1>();
-//builder.Services.AddTransient<Services.PostsServiceTemp1>();
-builder.Services.AddSingleton<Services.PostsServiceTemp1>();
+//builder.Services.AddScoped(serviceType: typeof(Services.PostsServiceTemp1));
+//builder.Services.AddTransient(serviceType: typeof(Services.PostsServiceTemp1));
+//builder.Services.AddSingleton(serviceType: typeof(Services.PostsServiceTemp1));
 
-builder.Services.AddSingleton<Services.PostsServiceTemp2>();
-builder.Services.AddSingleton<Services.PostsServiceTemp3>();
+builder.Services.AddScoped<Services.PostsServiceTemp1>();
+builder.Services.AddScoped<Services.PostsServiceTemp2>();
+builder.Services.AddScoped<Services.PostsServiceTemp3>();
 
 // نکته مهم
 // دستورات فوق کار نمی‌کنند، مگر آن‌که
@@ -53,9 +54,9 @@ builder.Services.AddSingleton<Services.PostsServiceTemp3>();
 // ثبت شده باشد
 
 builder.Services.AddSingleton<Services.LogsService>();
-builder.Services.AddSingleton<Services.PostsService>();
+builder.Services.AddScoped<Services.PostsService>();
 
-builder.Services.AddSingleton
+builder.Services.AddScoped
 	<Services.ApplicationSettingsService>();
 
 await builder.Build().RunAsync();

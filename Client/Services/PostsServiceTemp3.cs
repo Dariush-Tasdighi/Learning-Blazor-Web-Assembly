@@ -9,17 +9,15 @@ public class PostsServiceTemp3 : Infrastructure.ServiceBase1
 			"https://jsonplaceholder.typicode.com";
 	}
 
-	public
-		async
-		System.Threading.Tasks.Task
-		<System.Collections.Generic.IList<ViewModels.PostViewModel>?>
-		GetAsync()
+	public async System.Threading.Tasks.Task
+		<System.Collections.Generic.IList<ViewModels.PostViewModel>?> GetAsync()
 	{
 		var url = "posts";
 
 		var result =
 			await
-			GetAsync<System.Collections.Generic.IList<ViewModels.PostViewModel>>(url: url);
+			GetAsync<System.Collections.Generic
+			.IList<ViewModels.PostViewModel>>(url: url);
 
 		return result;
 	}

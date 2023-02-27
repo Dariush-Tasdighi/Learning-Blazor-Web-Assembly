@@ -12,6 +12,14 @@ public class LogsService : object
 
 	protected System.Collections.Generic.IList<ViewModels.LogViewModel> Logs { get; }
 
+	public int LogCount
+	{
+		get
+		{
+			return Logs.Count;
+		}
+	}
+
 	public void AddLog(System.Type type, string? message)
 	{
 		if (string.IsNullOrWhiteSpace(value: message))
@@ -24,44 +32,16 @@ public class LogsService : object
 			new System.Diagnostics.StackTrace();
 
 		var methodBase =
-			stackTrace.GetFrame(1)?.GetMethod();
+			stackTrace.GetFrame(index: 1)?.GetMethod();
 		// **************************************************
 
 		message =
-			$"{ type.Namespace } -> { type.Name } -> { methodBase?.Name }: { message.Fix() }";
+			$"{type.Namespace} -> {type.Name} -> {methodBase?.Name}: {message.Fix()}";
 
 		var log = new ViewModels
 			.LogViewModel(message: message);
 
 		//Logs.Add(log);
-		Logs.Insert
-			(index: 0, item: log);
-	}
-
-	public void AddLog
-		(System.Type type, ViewModels.LogViewModel log)
-	{
-		if (log == null)
-		{
-			return;
-		}
-
-		if (string.IsNullOrWhiteSpace(value: log.Message))
-		{
-			return;
-		}
-
-		// **************************************************
-		var stackTrace =
-			new System.Diagnostics.StackTrace();
-
-		var methodBase =
-			stackTrace.GetFrame(1)?.GetMethod();
-		// **************************************************
-
-		log.Message =
-			$"{ type.Namespace } -> { type.Name } -> { methodBase?.Name }: { log.Message.Fix() }";
-
 		Logs.Insert
 			(index: 0, item: log);
 	}
