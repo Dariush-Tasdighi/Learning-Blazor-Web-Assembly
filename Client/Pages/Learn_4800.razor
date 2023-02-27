@@ -1,0 +1,20 @@
+﻿@page "/learn_4800"
+
+@inject Services.LogsService LogsService
+
+<input type="text" class="form-control" @bind="Message" />
+<br />
+<button type="button" class="btn btn-primary" @onclick="AddLog">Add Log</button>
+
+@code
+{
+	private string? Message { get; set; }
+
+	private void AddLog()
+	{
+		LogsService.AddLog
+			(type: GetType(), message: Message);
+
+		Message = null;
+	}
+}

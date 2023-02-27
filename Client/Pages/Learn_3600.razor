@@ -26,20 +26,23 @@
 
 @code
 {
-	public string? Message { get; set; }
+	private string? Message { get; set; }
 
 	private void DtxButtonClicked2()
 	{
-		Message = "[Caption 2] Button Clicked!";
+		Message =
+			"[Caption 2] Button Clicked!";
 	}
 
 	private void DtxButtonClicked3()
 	{
-		Message = "[Caption 3] Button Clicked!";
+		Message =
+			"[Caption 3] Button Clicked!";
 	}
 
 	private void DtxButtonClicked4(MouseEventArgs e)
 	{
-		Message = $"[Caption 4] Button Clicked! - X: {e.ScreenX} - Y: {e.ScreenY}";
+		Message =
+			$"[Caption 4] Button Clicked! - X: {e.ScreenX} - Y: {e.ScreenY}";
 	}
 }

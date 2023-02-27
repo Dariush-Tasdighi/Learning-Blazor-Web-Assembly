@@ -1,0 +1,70 @@
+﻿@page "/learn_4700"
+
+@inject Services.PostsServiceTemp3 PostsService
+
+@if (List is null)
+{
+	<div>
+		Loading...
+	</div>
+}
+else
+{
+	<div class="row">
+		<div class="col table-responsive">
+			<table class="table table-bordered table-sm table-striped table-hover">
+				<thead>
+					<tr>
+						<th>
+							@(Resources.DataDictionary.RowNumber)
+						</th>
+						<th>
+							@(Resources.DataDictionary.Title)
+						</th>
+						<th>
+							@(Resources.DataDictionary.Body)
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					@for (var index = 0; index <= List.Count - 1; index++)
+					{
+						var item = List[index];
+
+						<tr>
+							<td>
+								@(index + 1)
+							</td>
+							<td>
+								@if (string.IsNullOrWhiteSpace(value: item.Title) == false)
+								{
+									@((MarkupString)item.Title)
+								}
+							</td>
+							<td>
+								@if (string.IsNullOrWhiteSpace(value: item.Body) == false)
+								{
+									@((MarkupString)item.Body)
+								}
+							</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<hr />
+}
+
+@code
+{
+	protected override async Task OnInitializedAsync()
+	{
+		List =
+			await
+			PostsService.GetAsync();
+	}
+
+	private System.Collections.Generic.IList<ViewModels.PostViewModel>? List { get; set; }
+}

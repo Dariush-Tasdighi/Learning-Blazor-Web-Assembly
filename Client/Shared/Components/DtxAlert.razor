@@ -4,7 +4,6 @@
 
 @code
 {
-
 	public enum AlertType : int
 	{
 		Primary = 0,
@@ -22,6 +21,5 @@
 	public AlertType Type { get; set; }
 
 	[Parameter]
-	public RenderFragment ChildContent { get; set; }
-
+	public RenderFragment? ChildContent { get; set; }
 }

@@ -9,13 +9,12 @@
 
 @code
 {
-
 	public int ParentCounter { get; set; }
 
 	[Parameter]
-	public RenderFragment ChildContent { get; set; }
+	public RenderFragment? ChildContent { get; set; }
 
-	public DtxPanelHeader PanelHeader { get; set; }
+	public DtxPanelHeader? PanelHeader { get; set; }
 
 	private void IncreaseChildCounter()
 	{
@@ -32,5 +31,4 @@
 		// دستور ذیل خیلی مهم است
 		StateHasChanged();
 	}
-
 }

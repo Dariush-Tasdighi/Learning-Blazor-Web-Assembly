@@ -3,10 +3,8 @@
 public class PostViewModel : object
 {
 	#region Constructor
-	public PostViewModel(string title, string body) : base()
+	public PostViewModel() : base()
 	{
-		Body = body;
-		Title = title;
 	}
 	#endregion /Constructor
 
@@ -26,21 +24,21 @@ public class PostViewModel : object
 	public bool IsActive { get; set; }
 	#endregion /public bool IsActive { get; set; }
 
-	#region public string Body { get; set; }
+	#region public string? Body { get; set; }
 	/// <summary>
 	/// متن مطلب
 	/// </summary>
 	[System.ComponentModel.DataAnnotations.Required]
-	public string Body { get; set; }
-	#endregion /public string Body { get; set; }
+	public string? Body { get; set; }
+	#endregion /public string? Body { get; set; }
 
-	#region public string Title { get; set; }
+	#region public string? Title { get; set; }
 	/// <summary>
 	/// عنوان مطلب
 	/// </summary>
 	[System.ComponentModel.DataAnnotations.Required]
-	public string Title { get; set; }
-	#endregion /public string Title { get; set; }
+	public string? Title { get; set; }
+	#endregion /public string? Title { get; set; }
 
 	#endregion /Properties
 }

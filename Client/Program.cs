@@ -1,17 +1,18 @@
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 var builder =
 	Microsoft.AspNetCore.Components.WebAssembly
 	.Hosting.WebAssemblyHostBuilder.CreateDefault(args: args);
 
-builder.RootComponents.Add<Client.App>(selector: "#app");
+builder.RootComponents.Add
+	<Client.App>(selector: "#app");
 
 builder.RootComponents.Add
 	<Microsoft.AspNetCore.Components.Web.HeadOutlet>(selector: "head::after");
 
 // using Microsoft.Extensions.DependencyInjection;
 builder.Services.AddScoped
-	(current =>
+	(implementationFactory: current =>
 	{
 		var httpClient =
 			new System.Net.Http.HttpClient
@@ -22,5 +23,39 @@ builder.Services.AddScoped
 
 		return httpClient;
 	});
+
+//builder.Services.AddScoped
+//	<System.Net.Http.HttpClient>();
+
+//builder.Services.AddScoped
+//	(serviceType: typeof(System.Net.Http.HttpClient));
+
+//builder.Services.AddScoped
+//	(implementationFactory: current =>
+//	new System.Net.Http.HttpClient
+//	{
+//		BaseAddress =
+//			new System.Uri(builder.HostEnvironment.BaseAddress),
+//	});
+
+//builder.Services.AddScoped<Services.PostsServiceTemp1>();
+//builder.Services.AddTransient<Services.PostsServiceTemp1>();
+builder.Services.AddSingleton<Services.PostsServiceTemp1>();
+
+builder.Services.AddSingleton<Services.PostsServiceTemp2>();
+builder.Services.AddSingleton<Services.PostsServiceTemp3>();
+
+// نکته مهم
+// دستورات فوق کار نمی‌کنند، مگر آن‌که
+// HttpClient
+// به صورت
+// AddScoped
+// ثبت شده باشد
+
+builder.Services.AddSingleton<Services.LogsService>();
+builder.Services.AddSingleton<Services.PostsService>();
+
+builder.Services.AddSingleton
+	<Services.ApplicationSettingsService>();
 
 await builder.Build().RunAsync();
