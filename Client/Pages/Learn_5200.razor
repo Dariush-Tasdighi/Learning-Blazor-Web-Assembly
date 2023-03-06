@@ -1,8 +1,15 @@
-﻿@page "/learn_4900"
+﻿@page "/learn_5200"
 
 @inject Services.PostsService PostsService
+@inject NavigationManager NavigationManager
 
-@if (List is null)
+<div class="row">
+	<div class="col">
+		<button type="button" class="btn btn-primary" @onclick="Create">Create</button>
+	</div>
+</div>
+
+@if (List == null)
 {
 	<div>
 		Loading...
@@ -10,6 +17,8 @@
 
 	return;
 }
+
+<hr />
 
 <div class="row">
 	<div class="col table-responsive">
@@ -28,7 +37,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@for (var index = 0; index <= List.Count - 1; index++)
+				@for (int index = 0; index <= List.Count - 1; index++)
 				{
 					var item = List[index];
 
@@ -67,4 +76,9 @@
 	}
 
 	private System.Collections.Generic.IList<ViewModels.PostViewModel>? List { get; set; }
+
+	public void Create()
+	{
+		NavigationManager.NavigateTo(uri: "/posts/create_post_3", forceLoad: false);
+	}
 }

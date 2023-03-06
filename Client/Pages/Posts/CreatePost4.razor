@@ -1,0 +1,27 @@
+﻿@page "/posts/create_post_4"
+
+@inject NavigationManager NavigationManager
+
+<FormEditor Model="Model"
+			OnValidSubmit="OnSubmit"
+			Type="Infrastructure.Enums.EditFormType.Add"></FormEditor>
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		Model = new();
+	}
+
+	private ViewModels.PostViewModel? Model { get; set; }
+
+	private void OnSubmit()
+	{
+		// Save Data!
+
+		var uri = $"/learn_5300";
+
+		NavigationManager.NavigateTo
+			(uri: uri, forceLoad: false);
+	}
+}

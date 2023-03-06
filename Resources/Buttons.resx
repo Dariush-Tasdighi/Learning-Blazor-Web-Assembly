@@ -117,34 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Body" xml:space="preserve">
-    <value>Body</value>
+  <data name="Create" xml:space="preserve">
+    <value>Create</value>
   </data>
-  <data name="Count" xml:space="preserve">
-    <value>Count</value>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
   </data>
-  <data name="IsActive" xml:space="preserve">
-    <value>Active</value>
+  <data name="Edit" xml:space="preserve">
+    <value>Edit</value>
   </data>
-  <data name="Message" xml:space="preserve">
-    <value>Message</value>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
   </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
+  <data name="Return" xml:space="preserve">
+    <value>Return</value>
   </data>
-  <data name="Price" xml:space="preserve">
-    <value>Price</value>
-  </data>
-  <data name="RowNumber" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="SubTotal" xml:space="preserve">
-    <value>Sub Total</value>
-  </data>
-  <data name="Timestamp" xml:space="preserve">
-    <value>Timestamp</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Title</value>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
 </root>

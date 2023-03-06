@@ -1,0 +1,113 @@
+﻿@page "/posts/create_post_1"
+
+@inject NavigationManager NavigationManager
+
+@if (string.IsNullOrWhiteSpace(value: ErrorMessages) == false)
+{
+	<div class="alert alert-danger" role="alert">
+		@((MarkupString)ErrorMessages)
+	</div>
+}
+
+@if (Model is null)
+{
+	return;
+}
+
+<fieldset>
+	<legend class="text-center">
+		Create Post
+	</legend>
+
+	<hr class="mt-4">
+
+	<div class="mb-3">
+		<div class="form-check">
+			<input type="checkbox" id="isActive" class="form-check-input" @bind-value="Model.IsActive" />
+			<label for="isActive" class="form-check-label">@(Resources.DataDictionary.IsActive)</label>
+		</div>
+	</div>
+
+	<div class="mb-3">
+		<label for="title" class="form-label">@(Resources.DataDictionary.Title)</label>
+		<input type="text" id="title" @bind-value="Model.Title" maxlength="50" class="form-control" />
+	</div>
+
+	<div class="mb-3">
+		<label for="body" class="form-label">@(Resources.DataDictionary.Body)</label>
+		<textarea id="body" @bind="Model.Body" @bind:event="oninput" class="form-control"></textarea>
+	</div>
+
+	@if (string.IsNullOrWhiteSpace(value: Model.Body) == false)
+	{
+		<hr />
+
+		@((MarkupString)Model.Body)
+
+		<hr />
+	}
+
+	<div class="mb-3">
+		<button type="button" class="btn btn-primary" @onclick="Create">@(Resources.Buttons.Create)</button>
+		<button type="button" class="btn btn-secondary" @onclick="Reset">@(Resources.Buttons.Reset)</button>
+		<button type="button" class="btn btn-warning" @onclick="Return">@(Resources.Buttons.Return)</button>
+	</div>
+
+</fieldset>
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		Reset();
+	}
+
+	public string? ErrorMessages { get; set; }
+
+	private ViewModels.PostViewModel? Model { get; set; }
+
+	public void Reset()
+	{
+		Model = new();
+		ErrorMessages = null;
+	}
+
+	public void Return()
+	{
+		NavigationManager.NavigateTo
+			(uri: "/learn_5000", forceLoad: false);
+	}
+
+	public void Create()
+	{
+		ErrorMessages = null;
+
+		if (Model is null)
+		{
+			return;
+		}
+
+		if (string.IsNullOrWhiteSpace(value: Model.Title))
+		{
+			ErrorMessages = "Title is required!";
+		}
+
+		if (string.IsNullOrWhiteSpace(value: Model.Body))
+		{
+			if (ErrorMessages != null)
+			{
+				ErrorMessages += "<br />";
+			}
+
+			ErrorMessages += "Body is required!";
+		}
+
+		if (string.IsNullOrWhiteSpace(value: ErrorMessages))
+		{
+			// Save Data!
+
+			NavigationManager.NavigateTo
+				(uri: "/learn_5000", forceLoad: false);
+		}
+	}
+}

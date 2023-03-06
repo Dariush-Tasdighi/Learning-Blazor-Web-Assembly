@@ -28,7 +28,8 @@ public class PostViewModel : object
 	/// <summary>
 	/// متن مطلب
 	/// </summary>
-	[System.ComponentModel.DataAnnotations.Required]
+	[System.ComponentModel.DataAnnotations.Required
+		(AllowEmptyStrings = false)]
 	public string? Body { get; set; }
 	#endregion /public string? Body { get; set; }
 
@@ -36,7 +37,8 @@ public class PostViewModel : object
 	/// <summary>
 	/// عنوان مطلب
 	/// </summary>
-	[System.ComponentModel.DataAnnotations.Required]
+	[System.ComponentModel.DataAnnotations.Required
+		(AllowEmptyStrings = false)]
 	public string? Title { get; set; }
 	#endregion /public string? Title { get; set; }
 

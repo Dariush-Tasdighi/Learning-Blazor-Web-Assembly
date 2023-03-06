@@ -1,8 +1,9 @@
-﻿@page "/learn_4900"
+﻿@page "/learn_5300"
 
 @inject Services.PostsService PostsService
+@inject NavigationManager NavigationManager
 
-@if (List is null)
+@if (List == null)
 {
 	<div>
 		Loading...
@@ -10,6 +11,14 @@
 
 	return;
 }
+
+<div class="row">
+	<div class="col">
+		<button type="button" class="btn btn-primary" @onclick="Create">Create</button>
+	</div>
+</div>
+
+<hr />
 
 <div class="row">
 	<div class="col table-responsive">
@@ -20,6 +29,8 @@
 						@(Resources.DataDictionary.RowNumber)
 					</th>
 					<th>
+					</th>
+					<th>
 						@(Resources.DataDictionary.Title)
 					</th>
 					<th>
@@ -28,13 +39,16 @@
 				</tr>
 			</thead>
 			<tbody>
-				@for (var index = 0; index <= List.Count - 1; index++)
+				@for (int index = 0; index <= List.Count - 1; index++)
 				{
 					var item = List[index];
 
 					<tr>
 						<td>
 							@(index + 1)
+						</td>
+						<td>
+							<button type="button" @onclick="() => Edit(item)">@(Resources.Buttons.Edit)</button>
 						</td>
 						<td>
 							@if (string.IsNullOrWhiteSpace(value: item.Title) == false)
@@ -67,4 +81,20 @@
 	}
 
 	private System.Collections.Generic.IList<ViewModels.PostViewModel>? List { get; set; }
+
+	private void Create()
+	{
+		var uri =
+			$"/posts/create_post_4";
+
+		NavigationManager.NavigateTo(uri: uri, forceLoad: false);
+	}
+
+	private void Edit(ViewModels.PostViewModel post)
+	{
+		var uri =
+			$"/posts/edit_post_1/{post.Id}";
+
+		NavigationManager.NavigateTo(uri: uri, forceLoad: false);
+	}
 }

@@ -1,0 +1,88 @@
+﻿@page "/posts/create_post_2"
+
+@inject NavigationManager NavigationManager
+
+@if (Model is null)
+{
+	return;
+}
+
+<EditForm Model="Model" OnValidSubmit="HandleValidSubmit">
+
+	@*<ValidationSummary />*@
+	<DataAnnotationsValidator />
+
+	<fieldset>
+		<legend class="text-center">
+			Create Post
+		</legend>
+
+		<hr class="mt-4">
+
+		<div class="mb-3">
+			<div class="form-check">
+				<InputCheckbox id="isActive" class="form-check-input" @bind-Value="Model.IsActive" />
+				<label for="isActive" class="form-check-label">@(Resources.DataDictionary.IsActive)</label>
+				<div class="form-control-validation">
+					<ValidationMessage For="() => Model.IsActive" />
+				</div>
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<label for="title" class="form-label">@(Resources.DataDictionary.Title)</label>
+			<InputText id="title" @bind-Value="Model.Title" class="form-control" />
+			<div class="form-control-validation">
+				<ValidationMessage For="() => Model.Title" />
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<label for="body" class="form-label">@(Resources.DataDictionary.Body)</label>
+			<InputTextArea id="body" @bind-Value="Model.Body" class="form-control" />
+			<div class="form-control-validation">
+				<ValidationMessage For="() => Model.Body" />
+			</div>
+		</div>
+
+		<div class="mb-3">
+			<button type="submit" class="btn btn-primary">@(Resources.Buttons.Create)</button>
+			<button type="button" class="btn btn-secondary" @onclick="Reset">@(Resources.Buttons.Reset)</button>
+			<button type="button" class="btn btn-warning" @onclick="Return">@(Resources.Buttons.Return)</button>
+		</div>
+
+	</fieldset>
+
+</EditForm>
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		Reset();
+	}
+
+	public void Reset()
+	{
+		// نکته مهم
+		// اگر مدل وجود نداشته باشد به خطا خواهیم خورد
+		// پس مدل نباید نال باشد
+		Model = new();
+	}
+
+	private ViewModels.PostViewModel? Model { get; set; }
+
+	public void Return()
+	{
+		NavigationManager.NavigateTo
+			(uri: "/learn_5100", forceLoad: false);
+	}
+
+	private void HandleValidSubmit()
+	{
+		// Save Data!
+
+		NavigationManager.NavigateTo
+			(uri: "/learn_5100", forceLoad: false);
+	}
+}

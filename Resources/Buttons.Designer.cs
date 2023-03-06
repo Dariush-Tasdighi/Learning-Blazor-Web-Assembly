@@ -22,14 +22,14 @@ namespace Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class DataDictionary {
+    public class Buttons {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DataDictionary() {
+        internal Buttons() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.DataDictionary", typeof(DataDictionary).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Resources.Buttons", typeof(Buttons).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,92 +61,56 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Body.
+        ///   Looks up a localized string similar to Create.
         /// </summary>
-        public static string Body {
+        public static string Create {
             get {
-                return ResourceManager.GetString("Body", resourceCulture);
+                return ResourceManager.GetString("Create", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Count.
+        ///   Looks up a localized string similar to Delete.
         /// </summary>
-        public static string Count {
+        public static string Delete {
             get {
-                return ResourceManager.GetString("Count", resourceCulture);
+                return ResourceManager.GetString("Delete", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Active.
+        ///   Looks up a localized string similar to Edit.
         /// </summary>
-        public static string IsActive {
+        public static string Edit {
             get {
-                return ResourceManager.GetString("IsActive", resourceCulture);
+                return ResourceManager.GetString("Edit", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Message.
+        ///   Looks up a localized string similar to Reset.
         /// </summary>
-        public static string Message {
+        public static string Reset {
             get {
-                return ResourceManager.GetString("Message", resourceCulture);
+                return ResourceManager.GetString("Reset", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to Return.
         /// </summary>
-        public static string Name {
+        public static string Return {
             get {
-                return ResourceManager.GetString("Name", resourceCulture);
+                return ResourceManager.GetString("Return", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Price.
+        ///   Looks up a localized string similar to Save.
         /// </summary>
-        public static string Price {
+        public static string Save {
             get {
-                return ResourceManager.GetString("Price", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to #.
-        /// </summary>
-        public static string RowNumber {
-            get {
-                return ResourceManager.GetString("RowNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Sub Total.
-        /// </summary>
-        public static string SubTotal {
-            get {
-                return ResourceManager.GetString("SubTotal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Timestamp.
-        /// </summary>
-        public static string Timestamp {
-            get {
-                return ResourceManager.GetString("Timestamp", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Title.
-        /// </summary>
-        public static string Title {
-            get {
-                return ResourceManager.GetString("Title", resourceCulture);
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
     }

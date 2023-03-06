@@ -46,7 +46,7 @@ public abstract class ServiceBase : object
 				try
 				{
 					// ReadFromJsonAsync -> Extension Method -> using System.Net.Http.Json;
-					TResponse? result =
+					var result =
 						await
 						response.Content.ReadFromJsonAsync<TResponse>();
 
@@ -80,7 +80,7 @@ public abstract class ServiceBase : object
 		}
 		catch (System.Net.Http.HttpRequestException ex)
 		{
-			string errorMessage =
+			var errorMessage =
 				$"Exception: {ex.Message}";
 
 			LogsService.AddLog
@@ -91,7 +91,12 @@ public abstract class ServiceBase : object
 			//if(response != null)
 			//{
 			//	response.Dispose();
-			//	//response = null;
+			//	response = null;
+			//}
+
+			//if(response != null)
+			//{
+			//	response.Dispose();
 			//}
 
 			response?.Dispose();
@@ -100,168 +105,213 @@ public abstract class ServiceBase : object
 		return default;
 	}
 
-	//protected virtual
-	//	async
-	//	System.Threading.Tasks.Task<O>
-	//	PostAsync<I, O>(I viewModel)
-	//{
-	//	System.Net.Http.HttpResponseMessage response = null;
+	protected virtual
+		async
+		System.Threading.Tasks.Task<TResponse?>
+		PostAsync<TRequest, TResponse>(string url, TRequest viewModel)
+	{
+		System.Net.Http.HttpResponseMessage? response = null;
 
-	//	try
-	//	{
-	//		response =
-	//			await Http.PostAsJsonAsync
-	//			(requestUri: RequestUri, value: viewModel);
+		try
+		{
+			var requestUri =
+				$"{BaseUrl}/{url}";
 
-	//		response.EnsureSuccessStatusCode();
+			response =
+				await Http.PostAsJsonAsync
+				(requestUri: requestUri, value: viewModel);
 
-	//		if (response.IsSuccessStatusCode)
-	//		{
-	//			try
-	//			{
-	//				//System.Text.Json.JsonSerializerOptions jsonSerializerOptions =
-	//				//	new System.Text.Json.JsonSerializerOptions
-	//				//	{
-	//				//		MaxDepth = 5,
-	//				//	};
+			response.EnsureSuccessStatusCode();
 
-	//				//O result =
-	//				//	await response.Content.ReadFromJsonAsync<O>(options: jsonSerializerOptions);
+			if (response.IsSuccessStatusCode)
+			{
+				try
+				{
+					// Solution (1) - Old
+					//var data =
+					//	await
+					//	response.Content.ReadAsStringAsync();
 
+					//var result =
+					//	System.Text.Json.JsonSerializer
+					//	.Deserialize<TResponse>(json: data);
+					// /Solution (1) - Old
 
+					// Solution (2)
+					// New Solution
+					//var result =
+					//	await response.Content.ReadFromJsonAsync<TResponse>();
+					// /Solution (2)
 
-	//				// New Solution
-	//				O result =
-	//					await response.Content.ReadFromJsonAsync<O>();
+					// Solution (3)
+					var jsonSerializerOptions =
+						new System.Text.Json.JsonSerializerOptions
+						{
+							MaxDepth = 5,
+						};
 
-	//				return result;
-	//				// /New Solution
+					var result =
+						await
+						response.Content.ReadFromJsonAsync
+						<TResponse>(options: jsonSerializerOptions);
+					// /Solution (3)
 
-	//				// Old Solution
-	//				//string data =
-	//				//	await response.Content.ReadAsStringAsync();
+					return result;
+				}
+				// When content type is not valid
+				catch (System.NotSupportedException)
+				{
+					var errorMessage =
+						"The content type is not supported!";
 
-	//				//O result =
-	//				//	System.Text.Json.JsonSerializer.Deserialize<O>(data);
-	//				// /Old Solution
-	//			}
-	//			// When content type is not valid
-	//			catch (System.NotSupportedException)
-	//			{
-	//				System.Console.WriteLine("The content type is not supported.");
-	//			}
-	//			// Invalid JSON
-	//			catch (System.Text.Json.JsonException)
-	//			{
-	//				System.Console.WriteLine("Invalid JSON.");
-	//			}
-	//		}
-	//	}
-	//	catch (System.Net.Http.HttpRequestException ex)
-	//	{
-	//		System.Console.WriteLine(ex.Message);
-	//	}
-	//	finally
-	//	{
-	//		response.Dispose();
-	//		//response = null;
-	//	}
+					LogsService.AddLog
+						(type: GetType(), message: errorMessage);
+				}
+				// Invalid JSON
+				catch (System.Text.Json.JsonException)
+				{
+					var errorMessage = "Invalid JSON!";
 
-	//	return default;
-	//}
+					LogsService.AddLog
+						(type: GetType(), message: errorMessage);
+				}
+			}
+		}
+		catch (System.Net.Http.HttpRequestException ex)
+		{
+			LogsService.AddLog
+				(type: GetType(), message: ex.Message);
+		}
+		finally
+		{
+			response?.Dispose();
+		}
 
-	//protected virtual
-	//	async
-	//	System.Threading.Tasks.Task<O>
-	//	PutAsync<I, O>(I viewModel)
-	//{
-	//	System.Net.Http.HttpResponseMessage response = null;
+		return default;
+	}
 
-	//	try
-	//	{
-	//		response =
-	//			await Http.PutAsJsonAsync
-	//			(requestUri: RequestUri, value: viewModel);
+	protected virtual
+		async
+		System.Threading.Tasks.Task<TResponse?>
+		PutAsync<TRequest, TResponse>(string url, TRequest viewModel)
+	{
+		System.Net.Http.HttpResponseMessage? response = null;
 
-	//		response.EnsureSuccessStatusCode();
+		try
+		{
+			var requestUri =
+				$"{BaseUrl}/{url}";
 
-	//		if (response.IsSuccessStatusCode)
-	//		{
-	//			try
-	//			{
-	//				O result =
-	//					await response.Content.ReadFromJsonAsync<O>();
+			response =
+				await Http.PutAsJsonAsync
+				(requestUri: requestUri, value: viewModel);
 
-	//				return result;
-	//			}
-	//			// When content type is not valid
-	//			catch (System.NotSupportedException)
-	//			{
-	//				System.Console.WriteLine("The content type is not supported.");
-	//			}
-	//			// Invalid JSON
-	//			catch (System.Text.Json.JsonException)
-	//			{
-	//				System.Console.WriteLine("Invalid JSON.");
-	//			}
-	//		}
-	//	}
-	//	catch (System.Net.Http.HttpRequestException ex)
-	//	{
-	//		System.Console.WriteLine(ex.Message);
-	//	}
-	//	finally
-	//	{
-	//		response.Dispose();
-	//	}
+			response.EnsureSuccessStatusCode();
 
-	//	return default;
-	//}
+			if (response.IsSuccessStatusCode)
+			{
+				try
+				{
+					var result =
+						await
+						response.Content.ReadFromJsonAsync<TResponse>();
 
-	//protected virtual
-	//	async
-	//	System.Threading.Tasks.Task<O>
-	//	DeleteAsync<O>()
-	//{
-	//	System.Net.Http.HttpResponseMessage response = null;
+					return result;
+				}
+				// When content type is not valid
+				catch (System.NotSupportedException)
+				{
+					var errorMessage =
+						"The content type is not supported!";
 
-	//	try
-	//	{
-	//		response =
-	//			await Http.DeleteAsync(requestUri: RequestUri);
+					LogsService.AddLog
+						(type: GetType(), message: errorMessage);
+				}
+				// Invalid JSON
+				catch (System.Text.Json.JsonException)
+				{
+					var errorMessage = "Invalid JSON!";
 
-	//		response.EnsureSuccessStatusCode();
+					LogsService.AddLog
+						(type: GetType(), message: errorMessage);
+				}
+			}
+		}
+		catch (System.Net.Http.HttpRequestException ex)
+		{
+			LogsService.AddLog
+				(type: GetType(), message: ex.Message);
+		}
+		finally
+		{
+			response?.Dispose();
+		}
 
-	//		if (response.IsSuccessStatusCode)
-	//		{
-	//			try
-	//			{
-	//				O result =
-	//					await response.Content.ReadFromJsonAsync<O>();
+		return default;
+	}
 
-	//				return result;
-	//			}
-	//			// When content type is not valid
-	//			catch (System.NotSupportedException)
-	//			{
-	//				System.Console.WriteLine("The content type is not supported.");
-	//			}
-	//			// Invalid JSON
-	//			catch (System.Text.Json.JsonException)
-	//			{
-	//				System.Console.WriteLine("Invalid JSON.");
-	//			}
-	//		}
-	//	}
-	//	catch (System.Net.Http.HttpRequestException ex)
-	//	{
-	//		System.Console.WriteLine(ex.Message);
-	//	}
-	//	finally
-	//	{
-	//		response.Dispose();
-	//	}
+	protected virtual
+		async
+		System.Threading.Tasks.Task<TResponse?>
+		DeleteAsync<TResponse>(string url, string? query = null)
+	{
+		System.Net.Http.HttpResponseMessage? response = null;
 
-	//	return default;
-	//}
+		try
+		{
+			var requestUri =
+				$"{BaseUrl}/{url}";
+
+			if (string.IsNullOrWhiteSpace(value: query) == false)
+			{
+				requestUri =
+					$"{requestUri}?{query}";
+			}
+
+			response =
+				await Http.DeleteAsync(requestUri: requestUri);
+
+			response.EnsureSuccessStatusCode();
+
+			if (response.IsSuccessStatusCode)
+			{
+				try
+				{
+					var result =
+						await
+						response.Content.ReadFromJsonAsync<TResponse>();
+
+					return result;
+				}
+				// When content type is not valid
+				catch (System.NotSupportedException)
+				{
+					var errorMessage =
+						"The content type is not supported!";
+
+					LogsService.AddLog
+						(type: GetType(), message: errorMessage);
+				}
+				// Invalid JSON
+				catch (System.Text.Json.JsonException)
+				{
+					var errorMessage = "Invalid JSON!";
+
+					LogsService.AddLog
+						(type: GetType(), message: errorMessage);
+				}
+			}
+		}
+		catch (System.Net.Http.HttpRequestException ex)
+		{
+			LogsService.AddLog
+				(type: GetType(), message: ex.Message);
+		}
+		finally
+		{
+			response?.Dispose();
+		}
+
+		return default;
+	}
 }

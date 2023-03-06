@@ -2,6 +2,6 @@
 
 public enum EditFormType : int
 {
-	Edit = 0,
-	Create = 1,
+	Add = 0,
+	Edit = 1,
 }

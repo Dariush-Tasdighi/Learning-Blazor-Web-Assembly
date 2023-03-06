@@ -7,6 +7,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Update="Buttons.Designer.cs">
+		  <DesignTime>True</DesignTime>
+		  <AutoGen>True</AutoGen>
+		  <DependentUpon>Buttons.resx</DependentUpon>
+		</Compile>
 		<Compile Update="DataDictionary.Designer.cs">
 			<AutoGen>True</AutoGen>
 			<DesignTime>True</DesignTime>
@@ -15,6 +20,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Update="Buttons.resx">
+		  <Generator>PublicResXFileCodeGenerator</Generator>
+		  <LastGenOutput>Buttons.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="DataDictionary.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>DataDictionary.Designer.cs</LastGenOutput>

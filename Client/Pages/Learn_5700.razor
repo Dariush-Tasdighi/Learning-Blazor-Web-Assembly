@@ -1,0 +1,31 @@
+﻿@page "/learn_5700"
+
+<h3>
+	Lazy Loading
+</h3>
+
+<a href="https://docs.microsoft.com/en-us/aspnet/core/blazor/webassembly-lazy-load-assemblies?view=aspnetcore-5.0" target="_blank">Resource 1</a>
+<br />
+<a href="https://code-maze.com/lazy-loading-in-blazor-webassembly/" target="_blank">Resource 2</a>
+<br />
+<a href="https://www.meziantou.net/lazy-load-assemblies-in-a-blazor-webassembly-application.htm" target="_blank">Resource 3</a>
+<br />
+<a href="https://blogs.u2u.be/peter/post/blazor-lazy-loading-and-dependency-injection" target="_blank">Resource 4 (Learning Step By Step)</a>
+
+<hr />
+
+<ul>
+	<li>Add reference LazyLoadedComponents (Razor Class Library)</li>
+	<li>Making some changes in Client.cproj file</li>
+	<li>Making some changes in App.razor</li>
+</ul>
+
+<hr />
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+	}
+}

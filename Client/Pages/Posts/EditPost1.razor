@@ -1,0 +1,33 @@
+﻿@page "/posts/edit_post_1/{Id:int}"
+
+@inject NavigationManager NavigationManager
+
+@(Id)
+
+<FormEditor Model="Model"
+			OnValidSubmit="OnSubmit"
+			Type="Infrastructure.Enums.EditFormType.Edit"></FormEditor>
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		// که باید به
+		// Backend
+		// متصل شده و داده را بارگزاری کنیم
+		Model = new();
+	}
+
+	[Parameter]
+	public int Id { get; set; }
+
+	private ViewModels.PostViewModel? Model { get; set; }
+
+	private void OnSubmit()
+	{
+		// Save Data!
+
+		NavigationManager.NavigateTo
+			(uri: "/learn_5300", forceLoad: false);
+	}
+}

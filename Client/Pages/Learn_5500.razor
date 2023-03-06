@@ -1,0 +1,103 @@
+﻿@page "/learn_5500"
+
+@inject IJSRuntime JS
+
+<h3>
+	Note: Use IJSRuntime! Not JSRuntime!
+</h3>
+
+<button type="button" class="btn btn-primary" @onclick="DoSomething1">
+	Do Something (1)
+</button>
+
+<hr />
+
+<button type="button" class="btn btn-primary" @onclick="DoSomething2">
+	Do Something (2)
+</button>
+
+<hr />
+
+<button type="button" class="btn btn-primary" @onclick="DoSomething3">
+	Do Something (3)
+</button>
+
+<hr />
+
+<button type="button" class="btn btn-primary" @onclick="DoSomething4">
+	Do Something (4)
+</button>
+
+<hr />
+
+Return Value (1): @(ReturnValue1)
+<br />
+Return Value (2): @(ReturnValue2)
+
+<hr />
+
+@code
+{
+	protected override void OnInitialized()
+	{
+		base.OnInitialized();
+
+		ReturnValue1 = "Hello";
+		ReturnValue2 = "World";
+	}
+
+	public string? ReturnValue1 { get; set; }
+
+	public string? ReturnValue2 { get; set; }
+
+	private void DoSomething1()
+	{
+		JS.InvokeVoidAsync
+			(identifier: "doSomething1");
+	}
+
+	private void DoSomething2()
+	{
+		var firstName = "Dariush";
+		var lastName = "Tasdighi";
+
+		JS.InvokeVoidAsync
+			(identifier: "doSomething2", firstName, lastName);
+	}
+
+	//private void DoSomething3()
+	//{
+	//	ReturnValue1 =
+	//		JS.InvokeAsync<string>
+	//		(identifier: "doSomething3").Result;
+	//}
+
+	//private void DoSomething4()
+	//{
+	//	var firstName = "Dariush";
+	//	var lastName = "Tasdighi";
+
+	//	ReturnValue2 =
+	//		JS.InvokeAsync<string>
+	//		(identifier: "doSomething4", firstName, lastName).Result;
+	//}
+
+	private async Task DoSomething3()
+	{
+		ReturnValue1 =
+			await
+			JS.InvokeAsync<string>
+			(identifier: "doSomething3");
+	}
+
+	private async Task DoSomething4()
+	{
+		var firstName = "Dariush";
+		var lastName = "Tasdighi";
+
+		ReturnValue2 =
+			await
+			JS.InvokeAsync<string>
+			(identifier: "doSomething4", firstName, lastName);
+	}
+}
