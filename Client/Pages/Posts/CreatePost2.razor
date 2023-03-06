@@ -9,7 +9,7 @@
 
 <EditForm Model="Model" OnValidSubmit="HandleValidSubmit">
 
-	@*<ValidationSummary />*@
+	<ValidationSummary />
 	<DataAnnotationsValidator />
 
 	<fieldset>
@@ -46,9 +46,15 @@
 		</div>
 
 		<div class="mb-3">
-			<button type="submit" class="btn btn-primary">@(Resources.Buttons.Create)</button>
-			<button type="button" class="btn btn-secondary" @onclick="Reset">@(Resources.Buttons.Reset)</button>
-			<button type="button" class="btn btn-warning" @onclick="Return">@(Resources.Buttons.Return)</button>
+			<button type="submit" class="btn btn-primary">
+				@(Resources.Buttons.Create)
+			</button>
+			<button type="button" class="btn btn-secondary" @onclick="Reset">
+				@(Resources.Buttons.Reset)
+			</button>
+			<button type="button" class="btn btn-warning" @onclick="Return">
+				@(Resources.Buttons.Return)
+			</button>
 		</div>
 
 	</fieldset>
@@ -65,8 +71,8 @@
 	public void Reset()
 	{
 		// نکته مهم
-		// اگر مدل وجود نداشته باشد به خطا خواهیم خورد
-		// پس مدل نباید نال باشد
+		// اگر مدل وجود نداشته باشد به خطا
+		// خواهیم خورد پس مدل نباید نال باشد
 		Model = new();
 	}
 
@@ -80,6 +86,8 @@
 
 	private void HandleValidSubmit()
 	{
+		// Business Validation
+
 		// Save Data!
 
 		NavigationManager.NavigateTo

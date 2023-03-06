@@ -2,7 +2,9 @@
 
 @inject NavigationManager NavigationManager
 
-<FormEditor Model="Model" OnValidSubmit="OnSubmit"></FormEditor>
+<FormEditor Model="Model"
+			OnValidSubmit="OnSubmit"
+			Type="Infrastructure.Enums.EditFormType.Add"></FormEditor>
 
 @code
 {
@@ -15,8 +17,6 @@
 
 	private void OnSubmit()
 	{
-		// Save Data!
-
 		NavigationManager.NavigateTo
 			(uri: "/learn_5200", forceLoad: false);
 	}

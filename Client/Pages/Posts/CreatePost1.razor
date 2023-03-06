@@ -40,17 +40,31 @@
 
 	@if (string.IsNullOrWhiteSpace(value: Model.Body) == false)
 	{
-		<hr />
+		<hr class="mt-4">
 
 		@((MarkupString)Model.Body)
 
-		<hr />
+		<hr class="mt-4">
 	}
 
-	<div class="mb-3">
-		<button type="button" class="btn btn-primary" @onclick="Create">@(Resources.Buttons.Create)</button>
-		<button type="button" class="btn btn-secondary" @onclick="Reset">@(Resources.Buttons.Reset)</button>
-		<button type="button" class="btn btn-warning" @onclick="Return">@(Resources.Buttons.Return)</button>
+	<div>
+		<button type="button" class="btn btn-primary" @onclick="Create">
+			@(Resources.Buttons.Create)
+		</button>
+
+		@*دستور ذیل کار نمی‌کند*@
+		@*
+		<button type="reset" class="btn btn-secondary">
+		Reset - کار نمی‌کند
+		</button>
+		*@
+
+		<button type="button" class="btn btn-secondary" @onclick="Reset">
+			@(Resources.Buttons.Reset)
+		</button>
+		<button type="button" class="btn btn-warning" @onclick="Return">
+			@(Resources.Buttons.Return)
+		</button>
 	</div>
 
 </fieldset>
@@ -94,7 +108,7 @@
 
 		if (string.IsNullOrWhiteSpace(value: Model.Body))
 		{
-			if (ErrorMessages != null)
+			if (ErrorMessages is not null)
 			{
 				ErrorMessages += "<br />";
 			}

@@ -52,8 +52,12 @@
 					@(Resources.Buttons.Save)
 				}
 			</button>
-			<button type="button" class="btn btn-secondary" @onclick="Reset">@(Resources.Buttons.Reset)</button>
-			<button type="button" class="btn btn-warning" @onclick="Return">@(Resources.Buttons.Return)</button>
+			<button type="button" class="btn btn-secondary" @onclick="Reset">
+				@(Resources.Buttons.Reset)
+			</button>
+			<button type="button" class="btn btn-warning" @onclick="Return">
+				@(Resources.Buttons.Return)
+			</button>
 		</div>
 
 	</fieldset>
@@ -90,6 +94,10 @@
 
 	private void HandleValidSubmit()
 	{
+		// Business Validation
+
+		// Save Data!
+
 		OnValidSubmit.InvokeAsync(arg: null);
 	}
 }
