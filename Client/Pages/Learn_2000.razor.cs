@@ -1,4 +1,11 @@
-﻿namespace Client.Pages;
+﻿//namespace Client.Pages
+//{
+//	public partial class Learn_2000
+//	{
+//	}
+//}
+
+namespace Client.Pages;
 
 /// <summary>
 /// Note: It Should be 'partial' Class!
@@ -10,6 +17,9 @@ public partial class Learn_2000
 	{
 		Message = "Hello, World!";
 	}
+
+	// Bad Practice
+	//private string Message;
 
 	// Bad Practice
 	//private string _message;

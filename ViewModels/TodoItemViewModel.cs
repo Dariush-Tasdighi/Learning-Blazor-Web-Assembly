@@ -1,8 +1,58 @@
-﻿namespace ViewModels;
+﻿// **************************************************
+//namespace ViewModels
+//{
+//	public class TodoItemViewModel
+//	{
+//		public bool IsDone { get; set; }
 
+//		public string Title { get; set; }
+//	}
+//}
+// **************************************************
+
+// **************************************************
+//namespace ViewModels
+//{
+//	public class TodoItemViewModel
+//	{
+//		public TodoItemViewModel(string title)
+//		{
+//			Title = title;
+//		}
+
+//		public bool IsDone { get; set; }
+
+//		public string Title { get; set; }
+//	}
+//}
+// **************************************************
+
+// **************************************************
+//namespace ViewModels;
+
+//public class TodoItemViewModel : object
+//{
+//	public TodoItemViewModel() : base()
+//	{
+//	}
+
+//	public bool IsDone { get; set; }
+
+//	public string? Title { get; set; }
+//}
+// **************************************************
+
+namespace ViewModels;
+
+/// <summary>
+/// کلاس اقلام انجام کار
+/// </summary>
 public class TodoItemViewModel : object
 {
 	#region Constructor
+	/// <summary>
+	/// سازنده کلاس
+	/// </summary>
 	public TodoItemViewModel() : base()
 	{
 	}
