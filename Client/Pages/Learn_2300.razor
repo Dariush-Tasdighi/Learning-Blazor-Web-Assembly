@@ -85,7 +85,7 @@
 		<hr />
 
 		<h5>
-			دستور ذیل کار نمی‌کند
+			متاسفانه دستور ذیل کار نمی‌کند
 		</h5>
 
 		<ul>
@@ -112,15 +112,79 @@
 	/// </summary>
 	protected override void OnInitialized()
 	{
+		// **************************************************
+		//ViewModels.TodoItemViewModel item =
+		//	new ViewModels.TodoItemViewModel();
+
+		//item.IsDone = false;
+		//item.Title = "Do Something";
+		// **************************************************
+
+		// **************************************************
+		//ViewModels.TodoItemViewModel item = new();
+
+		//item.IsDone = false;
+		//item.Title = "Do Something";
+		// **************************************************
+
+		// **************************************************
+		//var item = new ViewModels.TodoItemViewModel();
+
+		//item.IsDone = false;
+		//item.Title = "Do Something";
+		// **************************************************
+
+		// **************************************************
+		//var item = new ViewModels.TodoItemViewModel() { Title = "Do Something", IsDone = false };
+		// **************************************************
+
+		// **************************************************
+		//var item =
+		//	new ViewModels.TodoItemViewModel()
+		//		{
+		//			Title = "Do Something",
+		//			IsDone = false
+		//		};
+		// **************************************************
+
+		// **************************************************
+		//var item =
+		//	new ViewModels.TodoItemViewModel
+		//		{
+		//			Title = "Do Something",
+		//			IsDone = false
+		//		};
+		// **************************************************
+
+		// **************************************************
+		//var item =
+		//	new ViewModels.TodoItemViewModel
+		//		{
+		//			Title = "Do Something",
+		//			IsDone = false,
+		//		};
+		// **************************************************
+
+		// **************************************************
+		//var item =
+		//	new ViewModels.TodoItemViewModel
+		//		{
+		//			IsDone = false,
+		//			Title = "Do Something",
+		//		};
+		// **************************************************
+
 		Todos = new();
+
+		//Todos = new List<ViewModels.TodoItemViewModel>();
 
 		for (var index = 1; index <= 10; index++)
 		{
 			var item =
 				new ViewModels.TodoItemViewModel
 					{
-						IsDone = (index % 2 == 0),
 						Title = $"Title {index}",
+						IsDone = (index % 2 == 0),
 					};
 
 			Todos.Add(item: item);
@@ -133,6 +197,23 @@
 
 	// Bad Practice
 	//private List<ViewModels.TodoItemViewModel> _todos = new List<ViewModels.TodoItemViewModel>();
+
+	private int GetNotCompletedItemCount()
+	{
+		//if (Todos == null)
+
+		if (Todos is null)
+		{
+			return 0;
+		}
+
+		var result =
+			Todos
+			.Where(predicate: current => current.IsDone == false)
+			.Count();
+
+		return result;
+	}
 
 	private void AddNewTodoItem()
 	{
@@ -177,20 +258,5 @@
 		{
 			Todos.Remove(item: item);
 		}
-	}
-
-	private int GetNotCompletedItemCount()
-	{
-		if (Todos is null)
-		{
-			return 0;
-		}
-
-		var result =
-			Todos
-			.Where(predicate: current => current.IsDone == false)
-			.Count();
-
-		return result;
 	}
 }

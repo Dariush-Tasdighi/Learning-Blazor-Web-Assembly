@@ -151,6 +151,17 @@
 			return 0;
 		}
 
+		// Solution (1)
+		//var result = 0;
+
+		//foreach (var item in Items)
+		//{
+		//	result +=
+		//		item.ProductPrice * item.ProductCount;
+		//}
+		// /Solution (1)
+
+		// Solution (2)
 		var result = 0;
 
 		foreach (var item in Items)
@@ -158,6 +169,7 @@
 			result +=
 				GetSubTotal(item: item);
 		}
+		// /Solution (2)
 
 		return result;
 	}
