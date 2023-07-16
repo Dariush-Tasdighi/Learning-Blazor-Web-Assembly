@@ -30,7 +30,10 @@ public partial class Learn_2000
 	// Bad Practice
 	//public string Message { get; set; } = "Hello, World!";
 
-	public string Message { get; set; }
+	// Bad Practice
+	//public string Message { get; set; }
+
+	private string Message { get; set; }
 
 	private void DoSomething()
 	{
