@@ -54,6 +54,12 @@ Current Page Url: @(NavigationManager.Uri)
 	Go To Some Page (5)!
 </button>
 
+<br />
+
+<button type="button" @onclick="GoToSomePage6">
+	Go To Some Page (6)!
+</button>
+
 <hr />
 
 @code
@@ -85,16 +91,22 @@ Current Page Url: @(NavigationManager.Uri)
 	private void GoToSomePage3()
 	{
 		NavigationManager.NavigateTo
-			(uri: "/learn_4100", forceLoad: false);
+			(uri: "/learn_4000/Hi", forceLoad: false);
 	}
 
 	private void GoToSomePage4()
 	{
 		NavigationManager.NavigateTo
-			(uri: "/learn_4100/Hi", forceLoad: false);
+			(uri: "/learn_4100", forceLoad: false);
 	}
 
 	private void GoToSomePage5()
+	{
+		NavigationManager.NavigateTo
+			(uri: "/learn_4100/Hi", forceLoad: false);
+	}
+
+	private void GoToSomePage6()
 	{
 		NavigationManager.NavigateTo
 			(uri: "/learn_4100/Hi/Dariush", forceLoad: false);

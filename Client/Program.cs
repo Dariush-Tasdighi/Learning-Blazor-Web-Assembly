@@ -7,6 +7,20 @@ var builder =
 builder.RootComponents.Add
 	<Client.App>(selector: "#app");
 
+//builder.Services.AddScoped
+//	<System.Net.Http.HttpClient>();
+
+//builder.Services.AddScoped
+//	(serviceType: typeof(System.Net.Http.HttpClient));
+
+//builder.Services.AddScoped
+//	(implementationFactory: current =>
+//	new System.Net.Http.HttpClient
+//	{
+//		BaseAddress = new System.Uri
+//			(uriString: builder.HostEnvironment.BaseAddress),
+//	});
+
 builder.RootComponents.Add
 	<Microsoft.AspNetCore.Components.Web.HeadOutlet>(selector: "head::after");
 
@@ -23,20 +37,6 @@ builder.Services.AddScoped
 
 		return httpClient;
 	});
-
-//builder.Services.AddScoped
-//	<System.Net.Http.HttpClient>();
-
-//builder.Services.AddScoped
-//	(serviceType: typeof(System.Net.Http.HttpClient));
-
-//builder.Services.AddScoped
-//	(implementationFactory: current =>
-//	new System.Net.Http.HttpClient
-//	{
-//		BaseAddress = new System.Uri
-//			(uriString: builder.HostEnvironment.BaseAddress),
-//	});
 
 //builder.Services.AddScoped(serviceType: typeof(Services.PostsServiceTemp1));
 //builder.Services.AddTransient(serviceType: typeof(Services.PostsServiceTemp1));

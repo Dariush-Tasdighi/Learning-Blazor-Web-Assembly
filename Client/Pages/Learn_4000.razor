@@ -18,6 +18,21 @@ Id: @(Id)
 
 	protected override Task OnParametersSetAsync()
 	{
+		//if (Id == null)
+		//{
+		//	Id = 10;
+		//}
+
+		//if (Id is null)
+		//{
+		//	Id = 10;
+		//}
+
+		//if (!Id.HasValue)
+		//{
+		//	Id = 10;
+		//}
+
 		if (Id.HasValue == false)
 		{
 			Id = 10;
