@@ -65,5 +65,12 @@
 
 @code
 {
-	private int Index { get; set; } = 1;
+	//private int Index { get; set; } = 1;
+
+	protected override void OnInitialized()
+	{
+		Index = 1;
+	}
+
+	private int Index { get; set; }
 }

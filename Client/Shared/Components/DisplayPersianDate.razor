@@ -19,6 +19,11 @@
 		var day = persianCalendar.GetDayOfMonth(time: now)
 			.ToString().PadLeft(totalWidth: 2, paddingChar: '0');
 
+		// 1400/1/2		-> 1400/01/02
+		// 1400/11/2	-> 1400/11/02
+		// 1400/1/22	-> 1400/01/22
+		// 1400/11/22	-> 1400/11/22
+
 		Value = $"{year}/{month}/{day}";
 	}
 

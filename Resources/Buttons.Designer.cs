@@ -113,5 +113,14 @@ namespace Resources {
                 return ResourceManager.GetString("Save", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        public static string Submit {
+            get {
+                return ResourceManager.GetString("Submit", resourceCulture);
+            }
+        }
     }
 }

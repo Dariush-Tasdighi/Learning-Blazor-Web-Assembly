@@ -3,10 +3,10 @@
 @code
 {
 	[Parameter]
-	public string Caption { get; set; } = "Submit";
+	public EventCallback<MouseEventArgs> OnClick { get; set; }
 
 	[Parameter]
-	public EventCallback<MouseEventArgs> OnClick { get; set; }
+	public string Caption { get; set; } = Resources.Buttons.Submit;
 
 	private void ButtonClicked(MouseEventArgs e)
 	{

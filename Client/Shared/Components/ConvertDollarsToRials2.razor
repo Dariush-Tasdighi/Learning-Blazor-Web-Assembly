@@ -1,27 +1,31 @@
 ﻿<input type="text" @bind="Dollars" />
 <button type="button" @onclick="Convert">Convert</button>
 
-@if (rials > 0)
+@if (Rials > 0)
 {
-	@(rials.ToString(format: "#,##0"))
+	@(Rials.ToString(format: "#,##0"))
 	@:Rials
 }
 
 @code
 {
-	private long rials;
+	//protected override void OnInitialized()
+	//{
+	//	//Rate = 500_000;
+	//	//Dollars = 1_000;
+	//}
+
+	private long Rials{ get; set; }
 
 	[Parameter]
 	public int Rate { get; set; } = 500_000;
-
-	//private long dollars = 1_000;
 
 	[Parameter]
 	public long Dollars { get; set; } = 1_000;
 
 	private void Convert()
 	{
-		rials =
+		Rials =
 			Dollars * Rate;
 	}
 }
