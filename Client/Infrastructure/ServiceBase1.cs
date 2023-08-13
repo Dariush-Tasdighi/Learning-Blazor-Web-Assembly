@@ -26,14 +26,18 @@ public abstract class ServiceBase1 : object
 
 	protected virtual async
 		System.Threading.Tasks.Task<TResponse?>
-		GetAsync<TResponse>(string url, string? query = null)
+		GetAsync<TResponse>(string? url = null, string? query = null)
 	{
 		System.Net.Http.HttpResponseMessage? response = null;
 
 		try
 		{
-			var requestUri =
-				$"{BaseUrl}/{url}";
+			var requestUri = BaseUrl;
+
+			if (string.IsNullOrWhiteSpace(value: url) == false)
+			{
+				requestUri = $"{requestUri}/{url}";
+			}
 
 			if (string.IsNullOrWhiteSpace(value: query) == false)
 			{

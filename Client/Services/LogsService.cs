@@ -10,7 +10,7 @@ public class LogsService : object
 			.Generic.List<ViewModels.LogViewModel>();
 	}
 
-	protected System.Collections.Generic.IList<ViewModels.LogViewModel> Logs { get; private init; }
+	protected System.Collections.Generic.IList<ViewModels.LogViewModel> Logs { get; }
 
 	public int LogCount
 	{

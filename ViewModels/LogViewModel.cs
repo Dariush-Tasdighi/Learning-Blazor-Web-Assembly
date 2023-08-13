@@ -10,19 +10,19 @@ public class LogViewModel : object
 			System.DateTime.Now;
 	}
 
-	//public bool IsSeen { get; private set; }
+	//public bool IsSeen { get; }
 
-	public string Message { get; private init; }
+	public string Message { get; }
 
-	//public string ClassName { get; private init; }
+	//public string ClassName { get; }
 
-	//public string MethodName { get; private init; }
+	//public string MethodName { get; }
 
-	//public string NamespaceName { get; private init; }
+	//public string NamespaceName { get; }
 
-	//public Enums.LogLevel Level { get; private init; }
+	//public Enums.LogLevel Level { get; }
 
-	public System.DateTime Timestamp { get; private init; }
+	public System.DateTime Timestamp { get; }
 
 	//public void Seen()
 	//{
