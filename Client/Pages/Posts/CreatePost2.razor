@@ -21,7 +21,7 @@
 
 		<div class="mb-3">
 			<div class="form-check">
-				<InputCheckbox id="isActive" class="form-check-input" @bind-Value="Model.IsActive" />
+				<InputCheckbox id="isActive" @bind-Value="Model.IsActive" class="form-check-input" />
 				<label for="isActive" class="form-check-label">@(Resources.DataDictionary.IsActive)</label>
 				<div class="form-control-validation">
 					<ValidationMessage For="() => Model.IsActive" />

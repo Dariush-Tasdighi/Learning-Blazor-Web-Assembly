@@ -23,12 +23,17 @@
 
 	<div class="mb-3">
 		<div class="form-check">
-			<input type="checkbox" id="isActive" class="form-check-input" @bind-value="Model.IsActive" />
+			<input type="checkbox" id="isActive" @bind-value="Model.IsActive" class="form-check-input" />
 			<label for="isActive" class="form-check-label">@(Resources.DataDictionary.IsActive)</label>
 		</div>
 	</div>
 
 	<div class="mb-3">
+		@*
+		<span class="form-label">
+		@(Resources.DataDictionary.Title)
+		</span>
+		*@
 		<label for="title" class="form-label">@(Resources.DataDictionary.Title)</label>
 		<input type="text" id="title" @bind-value="Model.Title" maxlength="50" class="form-control" />
 	</div>
@@ -110,7 +115,7 @@
 		{
 			if (ErrorMessages is not null)
 			{
-				ErrorMessages += "<br />";
+				ErrorMessages += "<br>";
 			}
 
 			ErrorMessages += "Body is required!";

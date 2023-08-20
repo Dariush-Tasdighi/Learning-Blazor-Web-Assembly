@@ -3,11 +3,11 @@
 	"defaultProvider": "cdnjs",
 	"libraries": [
 		{
-			"library": "bootstrap@5.2.3",
+			"library": "bootstrap@5.3.1",
 			"destination": "wwwroot/lib/bootstrap/"
 		},
 		{
-			"library": "bootstrap-icons@1.10.3",
+			"library": "bootstrap-icons@1.10.5",
 			"destination": "wwwroot/lib/bootstrap-icons/"
 		},
 		{
@@ -15,7 +15,7 @@
 			"destination": "wwwroot/lib/bootstrap-iconpicker/"
 		},
 		{
-			"library": "jquery@3.6.3",
+			"library": "jquery@3.7.0",
 			"destination": "wwwroot/lib/jquery/"
 		},
 		{
@@ -31,11 +31,11 @@
 			"destination": "wwwroot/lib/tinymce/"
 		},
 		{
-			"library": "flag-icon-css@6.6.6",
+			"library": "flag-icon-css@6.10.0",
 			"destination": "wwwroot/lib/flag-icon-css/"
 		},
 		{
-			"library": "popper.js@2.11.6",
+			"library": "popper.js@2.11.8",
 			"destination": "wwwroot/lib/popper.js/"
 		}
 	]

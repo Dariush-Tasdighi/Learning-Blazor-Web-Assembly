@@ -3,12 +3,6 @@
 @inject Services.PostsService PostsService
 @inject NavigationManager NavigationManager
 
-<div class="row">
-	<div class="col">
-		<button type="button" class="btn btn-primary" @onclick="Create">Create</button>
-	</div>
-</div>
-
 @if (List is null)
 {
 	<div>
@@ -17,6 +11,12 @@
 
 	return;
 }
+
+<div class="row">
+	<div class="col">
+		<button type="button" class="btn btn-primary" @onclick="Create">Create</button>
+	</div>
+</div>
 
 <hr />
 
