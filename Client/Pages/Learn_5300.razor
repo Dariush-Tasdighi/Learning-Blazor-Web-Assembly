@@ -87,7 +87,8 @@
 		var uri =
 			$"/posts/create_post_4";
 
-		NavigationManager.NavigateTo(uri: uri, forceLoad: false);
+		NavigationManager.NavigateTo
+			(uri: uri, forceLoad: false);
 	}
 
 	private void Edit(ViewModels.PostViewModel post)
@@ -95,6 +96,7 @@
 		var uri =
 			$"/posts/edit_post_1/{post.Id}";
 
-		NavigationManager.NavigateTo(uri: uri, forceLoad: false);
+		NavigationManager.NavigateTo
+			(uri: uri, forceLoad: false);
 	}
 }

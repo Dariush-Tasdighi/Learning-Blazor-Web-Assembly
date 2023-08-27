@@ -27,11 +27,11 @@
 			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
 		},
 		{
-			"library": "tinymce@6.3.1",
+			"library": "tinymce@6.6.2",
 			"destination": "wwwroot/lib/tinymce/"
 		},
 		{
-			"library": "flag-icon-css@6.10.0",
+			"library": "flag-icon-css@6.11.0",
 			"destination": "wwwroot/lib/flag-icon-css/"
 		},
 		{
