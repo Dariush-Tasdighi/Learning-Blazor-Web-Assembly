@@ -30,9 +30,29 @@
 
 <hr />
 
+<button type="button" class="btn btn-primary" @onclick="DoSomething5">
+	Do Something (5)
+</button>
+
+<hr />
+
 Return Value (1): @(ReturnValue1)
 <br />
 Return Value (2): @(ReturnValue2)
+<br />
+
+@*
+@if(Person is not null)
+{
+	@(Person.FirstName)
+}
+*@
+
+Age: @(Person?.Age)
+<br />
+First Name: @(Person?.FirstName)
+<br />
+Last Name: @(Person?.LastName)
 
 <hr />
 
@@ -46,9 +66,9 @@ Return Value (2): @(ReturnValue2)
 		ReturnValue2 = "World";
 	}
 
-	public string? ReturnValue1 { get; set; }
-
-	public string? ReturnValue2 { get; set; }
+	private string? ReturnValue1 { get; set; }
+	private string? ReturnValue2 { get; set; }
+	private ViewModels.PersonViewModel? Person { get; set; }
 
 	private void DoSomething1()
 	{
@@ -72,6 +92,14 @@ Return Value (2): @(ReturnValue2)
 	//		(identifier: "doSomething3").Result;
 	//}
 
+	private async Task DoSomething3()
+	{
+		ReturnValue1 =
+			await
+			JS.InvokeAsync<string>
+			(identifier: "doSomething3");
+	}
+
 	//private void DoSomething4()
 	//{
 	//	var firstName = "Dariush";
@@ -82,14 +110,6 @@ Return Value (2): @(ReturnValue2)
 	//		(identifier: "doSomething4", firstName, lastName).Result;
 	//}
 
-	private async Task DoSomething3()
-	{
-		ReturnValue1 =
-			await
-			JS.InvokeAsync<string>
-			(identifier: "doSomething3");
-	}
-
 	private async Task DoSomething4()
 	{
 		var firstName = "Dariush";
@@ -99,5 +119,16 @@ Return Value (2): @(ReturnValue2)
 			await
 			JS.InvokeAsync<string>
 			(identifier: "doSomething4", firstName, lastName);
+	}
+
+	private async Task DoSomething5()
+	{
+		var firstName = "Dariush";
+		var lastName = "Tasdighi";
+
+		Person =
+			await
+			JS.InvokeAsync<ViewModels.PersonViewModel>
+			(identifier: "doSomething5", firstName, lastName);
 	}
 }
