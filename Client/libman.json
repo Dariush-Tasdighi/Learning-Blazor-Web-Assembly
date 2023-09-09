@@ -15,7 +15,7 @@
 			"destination": "wwwroot/lib/bootstrap-iconpicker/"
 		},
 		{
-			"library": "jquery@3.7.0",
+			"library": "jquery@3.7.1",
 			"destination": "wwwroot/lib/jquery/"
 		},
 		{
@@ -27,7 +27,7 @@
 			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
 		},
 		{
-			"library": "tinymce@6.6.2",
+			"library": "tinymce@6.7.0",
 			"destination": "wwwroot/lib/tinymce/"
 		},
 		{

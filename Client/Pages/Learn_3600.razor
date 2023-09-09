@@ -6,41 +6,41 @@
 
 <hr />
 
-<DtxButton2></DtxButton2>
+<DtatButton2></DtatButton2>
 
 <hr />
 
-<DtxButton2 Caption="Caption 1"></DtxButton2>
+<DtatButton2 Caption="Caption 2"></DtatButton2>
 
 <hr />
 
-<DtxButton2 OnClick="DtxButtonClicked2"></DtxButton2>
+<DtatButton2 OnClick="Button3Clicked"></DtatButton2>
 
 <hr />
 
-<DtxButton2 Caption="Caption 2" OnClick="() => DtxButtonClicked3()"></DtxButton2>
+<DtatButton2 Caption="Caption 4" OnClick="() => Button4Clicked()"></DtatButton2>
 
 <hr />
 
-<DtxButton2 Caption="Caption 4" OnClick="(e) => DtxButtonClicked4(e)"></DtxButton2>
+<DtatButton2 Caption="Caption 5" OnClick="(e) => Button5Clicked(e)"></DtatButton2>
 
 @code
 {
 	private string? Message { get; set; }
 
-	private void DtxButtonClicked2()
+	private void Button3Clicked()
 	{
 		Message =
 			"Third Button Clicked!";
 	}
 
-	private void DtxButtonClicked3()
+	private void Button4Clicked()
 	{
 		Message =
 			"Forth Button Clicked!";
 	}
 
-	private void DtxButtonClicked4(MouseEventArgs e)
+	private void Button5Clicked(MouseEventArgs e)
 	{
 		Message =
 			$"Fifth Button Clicked! - X: {e.ScreenX} - Y: {e.ScreenY}";

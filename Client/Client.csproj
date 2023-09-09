@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
+﻿<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
 	<PropertyGroup>
 		<Nullable>enable</Nullable>
@@ -15,10 +15,13 @@
 	<ItemGroup>
 		<ProjectReference Include="..\Dtat\Dtat.csproj" />
 		<ProjectReference Include="..\Resources\Resources.csproj" />
+		<ProjectReference Include="..\Dtat.Razor\Dtat.Razor.csproj" />
 		<ProjectReference Include="..\ViewModels\ViewModels.csproj" />
+		<ProjectReference Include="..\Dtat.Razor.Lazy\Dtat.Razor.Lazy.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<BlazorWebAssemblyLazyLoad Include="Dtat.Razor.Lazy.dll" />
 		<ServiceWorker Include="wwwroot\service-worker.js" PublishedContent="wwwroot\service-worker.published.js" />
 	</ItemGroup>
 

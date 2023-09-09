@@ -6,19 +6,19 @@
 
 <hr />
 
-<DtxButton1></DtxButton1>
+<DtatButton1></DtatButton1>
 
 <hr />
 
-<DtxButton1 Caption="Caption 1"></DtxButton1>
+<DtatButton1 Caption="Caption 2"></DtatButton1>
 
 <hr />
 
-<DtxButton1 OnClick="DtxButto1Clicked2"></DtxButton1>
+<DtatButton1 OnClick="Button3Clicked"></DtatButton1>
 
 <hr />
 
-<DtxButton1 Caption="Caption 2" OnClick="() => DtxButto1Clicked3()"></DtxButton1>
+<DtatButton1 Caption="Caption 4" OnClick="() => Button4Clicked()"></DtatButton1>
 
 <hr />
 
@@ -26,13 +26,13 @@
 {
 	private string? Message { get; set; }
 
-	private void DtxButto1Clicked2()
+	private void Button3Clicked()
 	{
 		Message =
 			"Third Button Clicked!";
 	}
 
-	private void DtxButto1Clicked3()
+	private void Button4Clicked()
 	{
 		Message =
 			"Forth Button Clicked!";

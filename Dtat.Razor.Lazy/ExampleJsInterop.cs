@@ -1,0 +1,39 @@
+using Microsoft.JSInterop;
+
+namespace Dtat.Razor.Lazy;
+
+public class ExampleJsInterop : object, IAsyncDisposable
+{
+	public ExampleJsInterop(Microsoft.JSInterop.IJSRuntime jsRuntime) : base()
+	{
+		ModuleTask =
+			new(() => jsRuntime.InvokeAsync<Microsoft.JSInterop.IJSObjectReference>
+			(identifier: "import", args: "./_content/Dtat.Razor.Lazy/exampleJsInterop.js")
+			.AsTask());
+	}
+
+	private Lazy<Task<Microsoft.JSInterop.IJSObjectReference>> ModuleTask { get; }
+
+	public async ValueTask<string> Prompt(string message)
+	{
+		var module = await ModuleTask.Value;
+
+		var result =
+			await
+			module.InvokeAsync<string>
+			(identifier: "showPrompt", args: message);
+
+		return result;
+	}
+
+	public async ValueTask DisposeAsync()
+	{
+		if (ModuleTask.IsValueCreated)
+		{
+			var module =
+				await ModuleTask.Value;
+
+			await module.DisposeAsync();
+		}
+	}
+}
