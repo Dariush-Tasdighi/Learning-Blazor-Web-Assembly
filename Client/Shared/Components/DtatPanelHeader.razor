@@ -11,7 +11,7 @@
 {
 	protected override void OnInitialized()
 	{
-		if (Parent == null)
+		if (Parent is null)
 		{
 			var errorMessage =
 				$"{nameof(DtatPanelHeader)} should be use inside a {nameof(DtatPanel)}";
