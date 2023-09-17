@@ -18,7 +18,7 @@
 
 </Router>
  *@
- @* ************************************************** *@
+@* ************************************************** *@
 
 @* ************************************************** *@
 @* *** For Lazy Loading ***************************** *@
@@ -29,7 +29,7 @@
 
 @inject LazyAssemblyLoader assemblyLoader
 
-<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="@(lazyLoadedAssemblies)" OnNavigateAsync="@(OnNavigateAsync)">
+<Router AppAssembly="@typeof(Program).Assembly" AdditionalAssemblies="@(LazyLoadedAssemblies)" OnNavigateAsync="@(OnNavigateAsync)">
 	<Navigating>
 		<div style="padding:20px;background-color:blue;color:white">
 			<p>Loading the requested page&hellip;</p>
@@ -49,7 +49,7 @@
 
 @code
 {
-	private List<Assembly> lazyLoadedAssemblies = new List<Assembly>();
+	private List<Assembly> LazyLoadedAssemblies { get; } = new List<Assembly>();
 
 	private async Task OnNavigateAsync(NavigationContext args)
 	{
@@ -57,24 +57,24 @@
 		{
 			//System.Console.WriteLine(args.Path);
 
-			if (args.Path.StartsWith("x/"))
+			if (args.Path.StartsWith(value: "x/"))
 			{
 				var assemblies =
 					await
 					assemblyLoader.LoadAssembliesAsync
 					(assembliesToLoad: new List<string>() { "Dtat.Razor.Lazy.dll" });
 
-				lazyLoadedAssemblies.AddRange(assemblies);
+				LazyLoadedAssemblies.AddRange(collection: assemblies);
 			}
 
-			// if (args.Path.StartsWith("crm/"))
+			// if (args.Path.StartsWith(value: "crm/"))
 			// {
 			// 	var assemblies =
 			// 		await
 			// 		assemblyLoader.LoadAssembliesAsync
 			// 		(assembliesToLoad: new List<string>() { "Crm.dll" });
 
-			// 	lazyLoadedAssemblies.AddRange(assemblies);
+			// 	LazyLoadedAssemblies.AddRange(collection: assemblies);
 			// }
 		}
 		catch (Exception ex)
