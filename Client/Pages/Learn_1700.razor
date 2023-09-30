@@ -1,22 +1,22 @@
 ﻿@page "/learn_1700"
 
 <h3>
-	@(message)
+	@(Message)
 </h3>
 
 <hr />
 
 <h3>
-	<input type="text" class="form-control" @bind="message" @bind:event="oninput" />
+	<input type="text" class="form-control" @bind="Message" @bind:event="oninput" />
 </h3>
 
 <h3>
-	<input type="text" class="form-control" @bind="message" @bind:event="oninput" />
+	<input type="text" class="form-control" @bind="Message" @bind:event="oninput" />
 </h3>
 
 <hr />
 
 @code
 {
-	private string message = "Hello, World!";
+	private string Message { get; set; } = "Hello, World!";
 }

@@ -1,7 +1,7 @@
 ﻿@page "/learn_1900"
 
 <h3>
-	@(message)
+	@(Message)
 </h3>
 
 <hr />
@@ -29,24 +29,24 @@
 	// Tanx Mr. Soroush Sadr
 	// CTRL + .
 
-	private string message = "Hello, World!";
+	private string Message { get; set; } = "Hello, World!";
 
 	private void DoSomething1()
 	{
-		message =
+		Message =
 			"Do Something (1) Invoked!";
 	}
 
 	private void DoSomething2()
 	{
-		message =
+		Message =
 			"Do Something (2) Invoked!";
 	}
 
 	private void DoSomething3
 		(Microsoft.AspNetCore.Components.Web.MouseEventArgs args)
 	{
-		message =
+		Message =
 			$"Do Something (3) Invoked! - {args.ScreenX} - {args.ScreenY} - {args.Type}";
 	}
 }

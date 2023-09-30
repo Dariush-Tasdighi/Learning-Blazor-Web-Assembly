@@ -1,24 +1,32 @@
 ﻿@page "/learn_1400"
 
 <div>
-	@(message)
+	@(Message1)
 </div>
 
 @*
 	<div>
-		@(Html.Raw(message))
+		@(Html.Raw(Message1))
 	</div>
 *@
 
 <hr />
 
 <div>
-	@((MarkupString)message)
+	@((MarkupString)Message2)
 </div>
 
 <hr />
 
+<hr />
+
+<div>
+	@((MarkupString)Message3)
+</div>
+
 @code
 {
-	private string message = "<b><i>Hello, World!</i><b>";
+	private string Message1 { get; set; } = "<b><i>Hello, World!</i><b>";
+	private string Message2 { get; set; } = "<b><i>Hello, World!</i><b>";
+	private string Message3 { get; set; } = "<b><i>Hello, World!</i><b><script>alert('You Hacked!')</script>";
 }

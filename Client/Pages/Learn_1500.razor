@@ -1,7 +1,7 @@
 ﻿@page "/learn_1500"
 
 <h3>
-	One Way Binding: @(message)
+	One Way Binding: @(Message)
 </h3>
 
 <hr />
@@ -9,18 +9,18 @@
 <h3>
 	Two Way Binding:
 	<br />
-	<input type="text" class="form-control" @bind="message" />
+	<input type="text" class="form-control" @bind="Message" />
 </h3>
 
 <h3>
 	Two Way Binding:
 	<br />
-	<input type="text" class="form-control" @bind-value="message" />
+	<input type="text" class="form-control" @bind-value="Message" />
 </h3>
 
 <hr />
 
 @code
 {
-	private string message = "Hello, World!";
+	private string Message { get; set; } = "Hello, World!";
 }

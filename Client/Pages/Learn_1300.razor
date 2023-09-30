@@ -1,15 +1,15 @@
 ﻿@page "/learn_1300"
 
 <h3>
-	@(message1)
+	@(Message1)
 </h3>
 
 <h3>
-	@(message2)
+	@(Message2)
 </h3>
 
 @code
 {
-	private string message1 = "Hello, World (1)!";
-	private string message2 = "Hello, World (2)!";
+	private string Message1 { get; set; } = "Hello, World (1)!";
+	private string Message2 { get; set; } = "Hello, World (2)!";
 }
