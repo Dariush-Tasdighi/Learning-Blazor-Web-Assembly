@@ -52,8 +52,8 @@
 				foreach (var item in Todos)
 				{
 					<li>
-						@*<button type="button" class="btn btn-danger btn-sm" @onclick="Delete(item)">x</button>*@
-						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(item)">x</button>
+						@*<button type="button" class="btn btn-danger btn-sm" @onclick="Delete(item: item)">x</button>*@
+						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(item: item)">x</button>
 						@*<button type="button" class="btn btn-danger btn-sm" @onclick="(e) => Delete(e, item)">x</button>*@
 
 						<input type="checkbox" @bind="item.IsDone" />
@@ -74,7 +74,7 @@
 
 					<li>
 						[@(index + 1)]
-						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(item)">x</button>
+						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(item: item)">x</button>
 						<input type="checkbox" @bind="item.IsDone" />
 						@(item.Title)
 					</li>
@@ -97,7 +97,7 @@
 				{
 					<li>
 						[@(index + 1)]
-						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(Todos[index])">x</button>
+						<button type="button" class="btn btn-danger btn-sm" @onclick="() => Delete(item: Todos[index])">x</button>
 						<input type="checkbox" @bind="Todos[index].IsDone" />
 						@(Todos[index].Title)
 					</li>
@@ -115,79 +115,78 @@
 	protected override void OnInitialized()
 	{
 		// **************************************************
-		//ViewModels.TodoItemViewModel item =
-		//	new ViewModels.TodoItemViewModel();
+		// ViewModels.TodoItemViewModel item =
+		// 	new ViewModels.TodoItemViewModel();
 
-		//item.IsDone = false;
-		//item.Title = "Do Something";
-		// **************************************************
-
-		// **************************************************
-		//ViewModels.TodoItemViewModel item = new();
-
-		//item.IsDone = false;
-		//item.Title = "Do Something";
+		// item.IsDone = false;
+		// item.Title = "Do Something";
 		// **************************************************
 
 		// **************************************************
-		//var item = new ViewModels.TodoItemViewModel();
+		// ViewModels.TodoItemViewModel item = new();
 
-		//item.IsDone = false;
-		//item.Title = "Do Something";
-		// **************************************************
-
-		// **************************************************
-		//var item = new ViewModels.TodoItemViewModel() { Title = "Do Something", IsDone = false };
+		// item.IsDone = false;
+		// item.Title = "Do Something";
 		// **************************************************
 
 		// **************************************************
-		//var item =
-		//	new ViewModels.TodoItemViewModel()
-		//		{
-		//			Title = "Do Something",
-		//			IsDone = false
-		//		};
+		// var item = new ViewModels.TodoItemViewModel();
+
+		// item.IsDone = false;
+		// item.Title = "Do Something";
 		// **************************************************
 
 		// **************************************************
-		//var item =
-		//	new ViewModels.TodoItemViewModel
-		//		{
-		//			Title = "Do Something",
-		//			IsDone = false
-		//		};
+		// var item = new ViewModels.TodoItemViewModel() { Title = "Do Something", IsDone = false };
 		// **************************************************
 
 		// **************************************************
-		//var item =
-		//	new ViewModels.TodoItemViewModel
-		//		{
-		//			Title = "Do Something",
-		//			IsDone = false,
-		//		};
+		// var item =
+		// 	new ViewModels.TodoItemViewModel()
+		// 	{
+		// 		Title = "Do Something",
+		// 		IsDone = false
+		// 	};
 		// **************************************************
 
 		// **************************************************
-		//var item =
-		//	new ViewModels.TodoItemViewModel
-		//		{
-		//			IsDone = false,
-		//			Title = "Do Something",
-		//		};
+		// var item =
+		// 	new ViewModels.TodoItemViewModel
+		// 	{
+		// 		Title = "Do Something",
+		// 		IsDone = false
+		// 	};
+		// **************************************************
+
+		// **************************************************
+		// var item =
+		// 	new ViewModels.TodoItemViewModel
+		// 	{
+		// 		Title = "Do Something",
+		// 		IsDone = false,
+		// 	};
+		// **************************************************
+
+		// **************************************************
+		// var item =
+		// 	new ViewModels.TodoItemViewModel
+		// 	{
+		// 		IsDone = false,
+		// 		Title = "Do Something",
+		// 	};
 		// **************************************************
 
 		Todos = new();
-
 		//Todos = new List<ViewModels.TodoItemViewModel>();
 
 		for (var index = 1; index <= 10; index++)
 		{
 			var item =
 				new ViewModels.TodoItemViewModel
-					{
-						Title = $"Title {index}",
-						IsDone = (index % 2 == 0),
-					};
+				{
+					Title = $"Title {index}",
+					IsDone = (index % 2 == 0),
+				};
 
 			Todos.Add(item: item);
 		}
@@ -222,12 +221,12 @@
 		NewTodoItemTitle =
 			NewTodoItemTitle.Fix();
 
-		if (NewTodoItemTitle == null)
+		if (NewTodoItemTitle is null)
 		{
 			return;
 		}
 
-		if (Todos == null)
+		if (Todos is null)
 		{
 			Todos = new List
 				<ViewModels.TodoItemViewModel>();
@@ -246,10 +245,10 @@
 
 		var newTodoItem =
 			new ViewModels.TodoItemViewModel()
-				{
-					IsDone = false,
-					Title = NewTodoItemTitle,
-				};
+			{
+				IsDone = false,
+				Title = NewTodoItemTitle,
+			};
 
 		Todos.Add(item: newTodoItem);
 	}

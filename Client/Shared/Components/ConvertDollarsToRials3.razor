@@ -18,6 +18,7 @@
 	public long Dollars { get; set; } = 1000;
 
 	[Parameter]
+	// public EventCallback OnRialsChanged { get; set; }
 	public EventCallback<long> OnRialsChanged { get; set; }
 
 	private void Convert()
@@ -25,6 +26,7 @@
 		Rials =
 			Dollars * Rate;
 
+		// OnRialsChanged.InvokeAsync();
 		OnRialsChanged.InvokeAsync(arg: Rials);
 	}
 }

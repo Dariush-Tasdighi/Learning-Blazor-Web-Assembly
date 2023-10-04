@@ -75,4 +75,7 @@ public class TodoItemViewModel : object
 	#endregion /public string? Title { get; set; }
 
 	#endregion /Properties
+
+	#region Methods
+	#endregion /Methods
 }

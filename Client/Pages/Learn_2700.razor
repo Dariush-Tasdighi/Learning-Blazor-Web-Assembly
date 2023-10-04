@@ -51,11 +51,11 @@
 								@(item.ProductCount)
 							</td>
 							<td>
-								<button type="button" class="btn btn-primary btn-sm" @onclick="() => Plus(item)">+</button>
-								<button type="button" class="btn btn-primary btn-sm" @onclick="() => Minus(item)">-</button>
+								<button type="button" class="btn btn-primary btn-sm" @onclick="() => Plus(item: item)">+</button>
+								<button type="button" class="btn btn-primary btn-sm" @onclick="() => Minus(item: item)">-</button>
 							</td>
 							<td>
-								@(GetSubTotal(item))
+								@(GetSubTotal(item: item))
 								@*@(item.ProductPrice * item.ProductCount)*@
 							</td>
 						</tr>
