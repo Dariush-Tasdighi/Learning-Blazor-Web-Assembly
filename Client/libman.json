@@ -3,11 +3,11 @@
 	"defaultProvider": "cdnjs",
 	"libraries": [
 		{
-			"library": "bootstrap@5.3.1",
+			"library": "bootstrap@5.3.2",
 			"destination": "wwwroot/lib/bootstrap/"
 		},
 		{
-			"library": "bootstrap-icons@1.10.5",
+			"library": "bootstrap-icons@1.11.1",
 			"destination": "wwwroot/lib/bootstrap-icons/"
 		},
 		{
@@ -31,7 +31,7 @@
 			"destination": "wwwroot/lib/tinymce/"
 		},
 		{
-			"library": "flag-icon-css@6.11.0",
+			"library": "flag-icon-css@6.11.1",
 			"destination": "wwwroot/lib/flag-icon-css/"
 		},
 		{
