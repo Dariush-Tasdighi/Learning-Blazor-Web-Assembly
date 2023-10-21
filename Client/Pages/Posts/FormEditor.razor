@@ -10,7 +10,14 @@
 
 	<fieldset>
 		<legend class="text-center">
-			Create Post
+			@if (Type == Infrastructure.Enums.EditFormType.Add)
+			{
+				<text>Create Post</text>
+			}
+			else
+			{
+				<text>Update Post</text>
+			}
 		</legend>
 
 		<hr class="mt-4">
