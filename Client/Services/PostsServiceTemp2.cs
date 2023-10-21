@@ -11,7 +11,7 @@ public class PostsServiceTemp2 : object
 		//_http = http;
 	}
 
-	protected System.Net.Http.HttpClient Http { get; }
+	private System.Net.Http.HttpClient Http { get; }
 	//private readonly System.Net.Http.HttpClient _http;
 
 	public async System.Threading.Tasks.Task
@@ -24,8 +24,8 @@ public class PostsServiceTemp2 : object
 		var result =
 			await
 			Http.GetFromJsonAsync
-				<System.Collections.Generic
-				.IList<ViewModels.PostViewModel>>(requestUri: requestUri);
+			<System.Collections.Generic
+			.IList<ViewModels.PostViewModel>>(requestUri: requestUri);
 
 		return result;
 	}

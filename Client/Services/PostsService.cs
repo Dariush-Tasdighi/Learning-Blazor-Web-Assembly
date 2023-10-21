@@ -22,8 +22,8 @@ public class PostsService : Infrastructure.ServiceBase
 
 		var result =
 			await
-			GetAsync<System.Collections.Generic.
-				IList<ViewModels.PostViewModel>?>(url: url);
+			GetAsync<System.Collections.Generic
+			.IList<ViewModels.PostViewModel>?>(url: url);
 
 		return result;
 	}

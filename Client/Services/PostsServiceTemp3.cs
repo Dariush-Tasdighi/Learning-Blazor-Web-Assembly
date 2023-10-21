@@ -13,6 +13,7 @@ public class PostsServiceTemp3 : Infrastructure.ServiceBase1
 		<System.Collections.Generic.IList<ViewModels.PostViewModel>?> GetAsync()
 	{
 		var url = "posts";
+		//var query = "isActive=1&page_index=5";
 
 		var result =
 			await

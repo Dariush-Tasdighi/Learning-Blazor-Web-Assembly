@@ -92,6 +92,15 @@ public abstract class ServiceBase1 : object
 			//	//response = null;
 			//}
 
+			//if (response is not null)
+			//{
+			//	response.Dispose();
+			//	//response = null;
+			//}
+
+			//response?.Dispose();
+			//response = null;
+
 			response?.Dispose();
 		}
 

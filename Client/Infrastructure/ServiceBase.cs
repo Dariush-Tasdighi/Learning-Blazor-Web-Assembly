@@ -88,17 +88,6 @@ public abstract class ServiceBase : object
 		}
 		finally
 		{
-			//if(response != null)
-			//{
-			//	response.Dispose();
-			//	response = null;
-			//}
-
-			//if(response != null)
-			//{
-			//	response.Dispose();
-			//}
-
 			response?.Dispose();
 		}
 
