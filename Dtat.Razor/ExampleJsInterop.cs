@@ -9,7 +9,7 @@ namespace Dtat.Razor;
 // This class can be registered as scoped DI service and then injected
 // into Blazor components for use.
 
-public class ExampleJsInterop : object, IAsyncDisposable
+public class ExampleJsInterop : object, System.IAsyncDisposable
 {
 	public ExampleJsInterop(Microsoft.JSInterop.IJSRuntime jsRuntime) : base()
 	{
@@ -19,10 +19,11 @@ public class ExampleJsInterop : object, IAsyncDisposable
 			.AsTask());
 	}
 
-	private Lazy<Task<Microsoft.JSInterop.IJSObjectReference>> ModuleTask { get; }
+	private System.Lazy<System.Threading.Tasks.Task
+		<Microsoft.JSInterop.IJSObjectReference>> ModuleTask { get; }
 	//private readonly Lazy<Task<Microsoft.JSInterop.IJSObjectReference>> moduleTask;
 
-	public async ValueTask<string> Prompt(string message)
+	public async System.Threading.Tasks.ValueTask<string> Prompt(string message)
 	{
 		var module = await ModuleTask.Value;
 
@@ -34,7 +35,7 @@ public class ExampleJsInterop : object, IAsyncDisposable
 		return result;
 	}
 
-	public async ValueTask DisposeAsync()
+	public async System.Threading.Tasks.ValueTask DisposeAsync()
 	{
 		if (ModuleTask.IsValueCreated)
 		{

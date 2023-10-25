@@ -37,7 +37,7 @@ function doSomething2(text1, text2) {
 	//	text1 + ' ' + text2
 
 	//var message =
-	//	`${text1} ${text2}`;
+	//	'${text1} ${text2}'
 
 	//var message =
 	//	`${text1} ${text2}`
@@ -66,6 +66,11 @@ function doSomething4(text1, text2) {
 
 function doSomething5(firstName, lastName) {
 
+	// Exactly JavaScript Object
+	//let person =
+	//	{ firstName: firstName, lastName: lastName, age: 20 }
+
+	// JavaScript Object / Json
 	let person =
 		{ 'firstName': firstName, 'lastName': lastName, 'age': 20 }
 

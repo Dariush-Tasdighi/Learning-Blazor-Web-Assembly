@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
 		<Nullable>enable</Nullable>
-		<ImplicitUsings>enable</ImplicitUsings>
 		<TargetFramework>net7.0</TargetFramework>
+		<!--<ImplicitUsings>enable</ImplicitUsings>-->
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -11,7 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.11" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="7.0.13" />
 	</ItemGroup>
 
 </Project>

@@ -1,0 +1,20 @@
+﻿@page "/learn_6000"
+
+@inject Services.ApplicationSettingsService ApplicationSettingsService
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+
+<h3>
+	@(Configuration["BaseUrl"])
+	<br />
+	@(Configuration.GetSection(key: "BaseUrl").Value)
+</h3>
+
+<h3>
+	BaseUrl: @(ApplicationSettingsService.BaseUrl)
+	<br />
+	Full Name: @(ApplicationSettingsService.FullName)
+</h3>
+
+@code
+{
+}

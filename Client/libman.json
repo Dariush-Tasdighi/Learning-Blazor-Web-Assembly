@@ -19,7 +19,7 @@
 			"destination": "wwwroot/lib/jquery/"
 		},
 		{
-			"library": "jquery-validate@1.19.5",
+			"library": "jquery-validate@1.20.0",
 			"destination": "wwwroot/lib/jquery-validate/"
 		},
 		{
@@ -27,7 +27,7 @@
 			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
 		},
 		{
-			"library": "tinymce@6.7.0",
+			"library": "tinymce@6.7.2",
 			"destination": "wwwroot/lib/tinymce/"
 		},
 		{

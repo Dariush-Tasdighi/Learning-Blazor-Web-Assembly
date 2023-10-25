@@ -53,10 +53,9 @@ builder.Services.AddScoped<Services.PostsServiceTemp3>();
 // AddScoped
 // ثبت شده باشد
 
-builder.Services.AddSingleton<Services.LogsService>();
 builder.Services.AddScoped<Services.PostsService>();
 
-builder.Services.AddScoped
-	<Services.ApplicationSettingsService>();
+builder.Services.AddSingleton<Services.LogsService>();
+builder.Services.AddScoped<Services.ApplicationSettingsService>(); // ?????
 
 await builder.Build().RunAsync();

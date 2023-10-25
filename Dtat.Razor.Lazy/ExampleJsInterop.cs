@@ -2,7 +2,7 @@ using Microsoft.JSInterop;
 
 namespace Dtat.Razor.Lazy;
 
-public class ExampleJsInterop : object, IAsyncDisposable
+public class ExampleJsInterop : object, System.IAsyncDisposable
 {
 	public ExampleJsInterop(Microsoft.JSInterop.IJSRuntime jsRuntime) : base()
 	{
@@ -12,9 +12,10 @@ public class ExampleJsInterop : object, IAsyncDisposable
 			.AsTask());
 	}
 
-	private Lazy<Task<Microsoft.JSInterop.IJSObjectReference>> ModuleTask { get; }
+	private System.Lazy<System.Threading.Tasks.Task
+		<Microsoft.JSInterop.IJSObjectReference>> ModuleTask { get; }
 
-	public async ValueTask<string> Prompt(string message)
+	public async System.Threading.Tasks.ValueTask<string> Prompt(string message)
 	{
 		var module = await ModuleTask.Value;
 
@@ -26,7 +27,7 @@ public class ExampleJsInterop : object, IAsyncDisposable
 		return result;
 	}
 
-	public async ValueTask DisposeAsync()
+	public async System.Threading.Tasks.ValueTask DisposeAsync()
 	{
 		if (ModuleTask.IsValueCreated)
 		{
