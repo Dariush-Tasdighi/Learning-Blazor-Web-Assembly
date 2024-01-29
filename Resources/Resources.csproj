@@ -2,15 +2,15 @@
 
 	<PropertyGroup>
 		<Nullable>enable</Nullable>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<!--<ImplicitUsings>enable</ImplicitUsings>-->
 	</PropertyGroup>
 
 	<ItemGroup>
 		<Compile Update="Buttons.Designer.cs">
-		  <DesignTime>True</DesignTime>
-		  <AutoGen>True</AutoGen>
-		  <DependentUpon>Buttons.resx</DependentUpon>
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Buttons.resx</DependentUpon>
 		</Compile>
 		<Compile Update="DataDictionary.Designer.cs">
 			<AutoGen>True</AutoGen>
@@ -21,8 +21,8 @@
 
 	<ItemGroup>
 		<EmbeddedResource Update="Buttons.resx">
-		  <Generator>PublicResXFileCodeGenerator</Generator>
-		  <LastGenOutput>Buttons.Designer.cs</LastGenOutput>
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Buttons.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
 		<EmbeddedResource Update="DataDictionary.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
