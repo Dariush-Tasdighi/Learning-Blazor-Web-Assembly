@@ -15,6 +15,18 @@
 //{
 //	public class TodoItemViewModel
 //	{
+//		public bool IsDone { get; set; }
+
+//		public string? Title { get; set; }
+//	}
+//}
+// **************************************************
+
+// **************************************************
+//namespace ViewModels
+//{
+//	public class TodoItemViewModel
+//	{
 //		public TodoItemViewModel(string title)
 //		{
 //			Title = title;
@@ -23,6 +35,18 @@
 //		public bool IsDone { get; set; }
 
 //		public string Title { get; set; }
+//	}
+//}
+// **************************************************
+
+// **************************************************
+//namespace ViewModels
+//{
+//	public class TodoItemViewModel(string title) : object
+//	{
+//		public bool IsDone { get; set; }
+
+//		public string Title { get; set; } = title;
 //	}
 //}
 // **************************************************

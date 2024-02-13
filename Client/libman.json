@@ -7,12 +7,8 @@
 			"destination": "wwwroot/lib/bootstrap/"
 		},
 		{
-			"library": "bootstrap-icons@1.11.1",
+			"library": "bootstrap-icons@1.11.3",
 			"destination": "wwwroot/lib/bootstrap-icons/"
-		},
-		{
-			"library": "bootstrap-iconpicker@1.10.0",
-			"destination": "wwwroot/lib/bootstrap-iconpicker/"
 		},
 		{
 			"library": "jquery@3.7.1",
@@ -27,12 +23,8 @@
 			"destination": "wwwroot/lib/jquery-validation-unobtrusive/"
 		},
 		{
-			"library": "tinymce@6.7.2",
+			"library": "tinymce@6.8.3",
 			"destination": "wwwroot/lib/tinymce/"
-		},
-		{
-			"library": "flag-icon-css@6.11.1",
-			"destination": "wwwroot/lib/flag-icon-css/"
 		},
 		{
 			"library": "popper.js@2.11.8",
