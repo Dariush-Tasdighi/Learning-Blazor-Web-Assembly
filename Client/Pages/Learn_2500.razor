@@ -370,10 +370,28 @@
 
 @code
 {
+	// protected override void OnInitialized()
+	// {
+	// 	Items = [];
+
+	// 	for (var index = 1; index <= 5; index++)
+	// 	{
+	// 		var item =
+	// 			new ViewModels.BasketItemViewModel
+	// 				{
+	// 					ProductCount = 1,
+	// 					ProductPrice = index * 100,
+	// 					ProductName = $"Product {index}",
+	// 				};
+
+	// 		Items.Add(item: item);
+	// 	}
+	// }
+
+	// private List<ViewModels.BasketItemViewModel>? Items { get; set; }
+
 	protected override void OnInitialized()
 	{
-		Items = new();
-
 		for (var index = 1; index <= 5; index++)
 		{
 			var item =
@@ -388,5 +406,5 @@
 		}
 	}
 
-	private List<ViewModels.BasketItemViewModel>? Items { get; set; }
+	private List<ViewModels.BasketItemViewModel> Items { get; set; } = [];
 }

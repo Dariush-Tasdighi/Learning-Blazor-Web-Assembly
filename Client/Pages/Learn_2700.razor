@@ -31,39 +31,37 @@
 			</thead>
 
 			<tbody>
-				@if (Items is not null)
+				@for (var index = 0; index <= Items.Count - 1; index++)
 				{
-					for (var index = 0; index <= Items.Count - 1; index++)
-					{
-						var item = Items[index];
+					var item = Items[index];
 
-						<tr>
-							<td>
-								@(index + 1)
-							</td>
-							<td>
-								@(item.ProductName)
-							</td>
-							<td>
-								@(item.ProductPrice)
-							</td>
-							<td>
-								@(item.ProductCount)
-							</td>
-							<td>
-								<button type="button" class="btn btn-primary btn-sm" @onclick="() => Plus(item: item)">+</button>
-								<button type="button" class="btn btn-primary btn-sm" @onclick="() => Minus(item: item)">-</button>
-							</td>
-							<td>
-								@(GetSubTotal(item: item))
-								@*@(item.ProductPrice * item.ProductCount)*@
-							</td>
-						</tr>
-					}
+					<tr>
+						<td>
+							@(index + 1)
+						</td>
+						<td>
+							@(item.ProductName)
+						</td>
+						<td>
+							@(item.ProductPrice)
+						</td>
+						<td>
+							@(item.ProductCount)
+						</td>
+						<td>
+							<button type="button" class="btn btn-primary btn-sm" @onclick="() => Plus(item: item)">+</button>
+							<button type="button" class="btn btn-primary btn-sm" @onclick="() => Minus(item: item)">-</button>
+						</td>
+						<td>
+							@(GetSubTotal(item: item))
+							@*@(item.ProductPrice * item.ProductCount)*@
+						</td>
+					</tr>
 				}
 
 				<tr>
 					<td colspan="5">
+						Total:
 					</td>
 					<td>
 						@(GetTotal())
@@ -79,8 +77,6 @@
 {
 	protected override void OnInitialized()
 	{
-		Items = new();
-
 		for (var index = 1; index <= 5; index++)
 		{
 			var item =
@@ -95,7 +91,7 @@
 		}
 	}
 
-	private List<ViewModels.BasketItemViewModel>? Items { get; set; }
+	private List<ViewModels.BasketItemViewModel> Items { get; set; } = [];
 
 	private void Plus(ViewModels.BasketItemViewModel item)
 	{
@@ -146,11 +142,6 @@
 
 	private int GetTotal()
 	{
-		if (Items is null)
-		{
-			return 0;
-		}
-
 		// Solution (1)
 		//var result = 0;
 

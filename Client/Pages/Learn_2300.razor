@@ -32,6 +32,7 @@
 		</h3>
 
 		<ul>
+			@*@if (Todos != null) *@
 			@if (Todos is not null)
 			{
 				foreach (var item in Todos)
@@ -176,17 +177,18 @@
 		// 	};
 		// **************************************************
 
-		Todos = new();
+		Todos = [];
+		// Todos = new();
 		//Todos = new List<ViewModels.TodoItemViewModel>();
 
 		for (var index = 1; index <= 10; index++)
 		{
 			var item =
 				new ViewModels.TodoItemViewModel
-				{
-					Title = $"Title {index}",
-					IsDone = (index % 2 == 0),
-				};
+					{
+						Title = $"Title {index}",
+						IsDone = (index % 2 == 0),
+					};
 
 			Todos.Add(item: item);
 		}
@@ -228,8 +230,7 @@
 
 		if (Todos is null)
 		{
-			Todos = new List
-				<ViewModels.TodoItemViewModel>();
+			Todos = [];
 		}
 
 		bool hasAny =
@@ -245,19 +246,21 @@
 
 		var newTodoItem =
 			new ViewModels.TodoItemViewModel()
-			{
-				IsDone = false,
-				Title = NewTodoItemTitle,
-			};
+				{
+					IsDone = false,
+					Title = NewTodoItemTitle,
+				};
 
 		Todos.Add(item: newTodoItem);
 	}
 
 	private void Delete(ViewModels.TodoItemViewModel item)
 	{
-		if (Todos is not null)
-		{
-			Todos.Remove(item: item);
-		}
+		// if (Todos is not null)
+		// {
+		// 	Todos.Remove(item: item);
+		// }
+
+		Todos?.Remove(item: item);
 	}
 }
