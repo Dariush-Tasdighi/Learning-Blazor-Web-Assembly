@@ -8,17 +8,23 @@
 	Please download file: @FileName
 </h3>
 
+@*
+<hr />
+
+<h3>
+	Please download file: @FileName.png
+</h3>
+*@
+
 <hr />
 
 <h3>
 	Please download file: @(FileName).png
-	@* Please download file: @FileName.png *@
 </h3>
 
 @code
 {
 	//string _fileName = "Googooli";
-
 	//private string _fileName = "Googooli";
 
 	private string FileName { get; set; } = "Googooli";
