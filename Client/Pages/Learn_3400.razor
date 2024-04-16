@@ -4,22 +4,22 @@
 
 <hr />
 
-<ConvertDollarsToRials3 OnRialsChanged="(e) => RialsChanged1(e)" />
-
-@if (Rials > 0)
-{
-	<br />
-	@(Rials.ToString(format: "#,##0"))
-}
-
-<hr />
-
 <ConvertDollarsToRials3 OnRialsChanged="RialsChanged2" />
 
 @if (string.IsNullOrWhiteSpace(value: message) == false)
 {
 	<br />
 	@(message)
+}
+
+<hr />
+
+<ConvertDollarsToRials3 OnRialsChanged="(e) => RialsChanged1(e)" />
+
+@if (Rials > 0)
+{
+	<br />
+	@(Rials.ToString(format: "#,##0"))
 }
 
 <hr />
