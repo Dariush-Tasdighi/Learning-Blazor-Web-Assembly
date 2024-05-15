@@ -87,7 +87,7 @@
 
 		<h5>
 			متاسفانه دستور ذیل کار نمی‌کند
-			ولی دلیل منطقی دارد
+			ولی ظاهرا دلیل منطقی دارد
 			با تشکر از آقای مهندس سروش صدر
 		</h5>
 
@@ -204,7 +204,6 @@
 	private int GetNotCompletedItemCount()
 	{
 		//if (Todos == null)
-
 		if (Todos is null)
 		{
 			return 0;
@@ -245,7 +244,7 @@
 		}
 
 		var newTodoItem =
-			new ViewModels.TodoItemViewModel()
+			new ViewModels.TodoItemViewModel
 				{
 					IsDone = false,
 					Title = NewTodoItemTitle,

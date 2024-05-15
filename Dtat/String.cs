@@ -16,7 +16,7 @@ public static class String : object
 	//	text =
 	//		text.Trim();
 
-	//	while (text.Contains("  "))
+	//	while (text.Contains(value: "  "))
 	//	{
 	//		text = text.Replace
 	//			(oldValue: "  ", newValue: " ");
@@ -24,7 +24,6 @@ public static class String : object
 
 	//	return text;
 	//}
-
 
 	public static string? Fix(this string? text)
 	{
@@ -36,7 +35,7 @@ public static class String : object
 		text =
 			text.Trim();
 
-		while (text.Contains("  "))
+		while (text.Contains(value: "  "))
 		{
 			text = text.Replace
 				(oldValue: "  ", newValue: " ");

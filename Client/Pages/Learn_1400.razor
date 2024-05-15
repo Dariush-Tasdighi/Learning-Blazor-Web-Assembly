@@ -22,9 +22,16 @@
 	@((MarkupString)Message3)
 </div>
 
+<hr />
+
+<div>
+	@((MarkupString)Message4)
+</div>
+
 @code
 {
 	private string Message1 { get; set; } = "<b><i>Hello, World!</i><b>";
 	private string Message2 { get; set; } = "<b><i>Hello, World!</i><b>";
 	private string Message3 { get; set; } = "<b><i>Hello, World!</i><b><script>alert('You Hacked!')</script>";
+	private string Message4 { get; set; } = "<b><i>Hello, World!</i><b><script>alert(origin)</script>";
 }

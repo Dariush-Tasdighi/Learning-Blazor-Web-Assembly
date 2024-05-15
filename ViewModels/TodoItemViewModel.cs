@@ -13,7 +13,19 @@
 // **************************************************
 //namespace ViewModels
 //{
-//	public class TodoItemViewModel
+//	public class TodoItemViewModel : object
+//	{
+//		public bool IsDone { get; set; }
+
+//		public string Title { get; set; }
+//	}
+//}
+// **************************************************
+
+// **************************************************
+//namespace ViewModels
+//{
+//	public class TodoItemViewModel : object
 //	{
 //		public bool IsDone { get; set; }
 
@@ -25,9 +37,9 @@
 // **************************************************
 //namespace ViewModels
 //{
-//	public class TodoItemViewModel
+//	public class TodoItemViewModel : object
 //	{
-//		public TodoItemViewModel(string title)
+//		public TodoItemViewModel(string title) : base()
 //		{
 //			Title = title;
 //		}
