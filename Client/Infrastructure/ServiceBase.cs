@@ -1,28 +1,31 @@
-﻿using System.Net.Http.Json;
+﻿using System;
+using Services;
+using System.Net.Http;
+using System.Text.Json;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace Infrastructure;
 
 public abstract class ServiceBase : object
 {
 	public ServiceBase
-		(System.Net.Http.HttpClient http, Services.LogsService logsService) : base()
+		(HttpClient http, LogsService logsService) : base()
 	{
 		Http = http;
 		LogsService = logsService;
 	}
 
+	protected HttpClient Http { get; }
+
 	protected string? BaseUrl { get; set; }
 
-	protected System.Net.Http.HttpClient Http { get; }
+	protected LogsService LogsService { get; }
 
-	protected Services.LogsService LogsService { get; }
-
-	protected virtual
-		async
-		System.Threading.Tasks.Task<TResponse?>
+	protected virtual async Task<TResponse?>
 		GetAsync<TResponse>(string url, string? query = null)
 	{
-		System.Net.Http.HttpResponseMessage? response = null;
+		HttpResponseMessage? response = null;
 
 		try
 		{
@@ -54,7 +57,7 @@ public abstract class ServiceBase : object
 				}
 
 				// When content type is not valid
-				catch (System.NotSupportedException ex)
+				catch (NotSupportedException ex)
 				{
 					var errorMessage =
 						$"Exception: {ex.Message} - The content type is not supported.";
@@ -68,7 +71,7 @@ public abstract class ServiceBase : object
 				}
 
 				// Invalid JSON
-				catch (System.Text.Json.JsonException ex)
+				catch (JsonException ex)
 				{
 					var errorMessage =
 						$"Exception: {ex.Message} - Invalid JSON.";
@@ -78,7 +81,7 @@ public abstract class ServiceBase : object
 				}
 			}
 		}
-		catch (System.Net.Http.HttpRequestException ex)
+		catch (HttpRequestException ex)
 		{
 			var errorMessage =
 				$"Exception: {ex.Message}";
@@ -94,12 +97,10 @@ public abstract class ServiceBase : object
 		return default;
 	}
 
-	protected virtual
-		async
-		System.Threading.Tasks.Task<TResponse?>
+	protected virtual async Task<TResponse?>
 		PostAsync<TRequest, TResponse>(string url, TRequest viewModel)
 	{
-		System.Net.Http.HttpResponseMessage? response = null;
+		HttpResponseMessage? response = null;
 
 		try
 		{
@@ -129,12 +130,13 @@ public abstract class ServiceBase : object
 					// Solution (2)
 					// New Solution
 					//var result =
-					//	await response.Content.ReadFromJsonAsync<TResponse>();
+					//	await
+					//	response.Content.ReadFromJsonAsync<TResponse>();
 					// /Solution (2)
 
 					// Solution (3)
 					var jsonSerializerOptions =
-						new System.Text.Json.JsonSerializerOptions
+						new JsonSerializerOptions
 						{
 							MaxDepth = 5,
 						};
@@ -148,7 +150,7 @@ public abstract class ServiceBase : object
 					return result;
 				}
 				// When content type is not valid
-				catch (System.NotSupportedException)
+				catch (NotSupportedException)
 				{
 					var errorMessage =
 						"The content type is not supported!";
@@ -157,7 +159,7 @@ public abstract class ServiceBase : object
 						(type: GetType(), message: errorMessage);
 				}
 				// Invalid JSON
-				catch (System.Text.Json.JsonException)
+				catch (JsonException)
 				{
 					var errorMessage = "Invalid JSON!";
 
@@ -166,7 +168,7 @@ public abstract class ServiceBase : object
 				}
 			}
 		}
-		catch (System.Net.Http.HttpRequestException ex)
+		catch (HttpRequestException ex)
 		{
 			LogsService.AddLog
 				(type: GetType(), message: ex.Message);
@@ -179,12 +181,10 @@ public abstract class ServiceBase : object
 		return default;
 	}
 
-	protected virtual
-		async
-		System.Threading.Tasks.Task<TResponse?>
+	protected virtual async Task<TResponse?>
 		PutAsync<TRequest, TResponse>(string url, TRequest viewModel)
 	{
-		System.Net.Http.HttpResponseMessage? response = null;
+		HttpResponseMessage? response = null;
 
 		try
 		{
@@ -208,7 +208,7 @@ public abstract class ServiceBase : object
 					return result;
 				}
 				// When content type is not valid
-				catch (System.NotSupportedException)
+				catch (NotSupportedException)
 				{
 					var errorMessage =
 						"The content type is not supported!";
@@ -217,7 +217,7 @@ public abstract class ServiceBase : object
 						(type: GetType(), message: errorMessage);
 				}
 				// Invalid JSON
-				catch (System.Text.Json.JsonException)
+				catch (JsonException)
 				{
 					var errorMessage = "Invalid JSON!";
 
@@ -226,7 +226,7 @@ public abstract class ServiceBase : object
 				}
 			}
 		}
-		catch (System.Net.Http.HttpRequestException ex)
+		catch (HttpRequestException ex)
 		{
 			LogsService.AddLog
 				(type: GetType(), message: ex.Message);
@@ -239,12 +239,10 @@ public abstract class ServiceBase : object
 		return default;
 	}
 
-	protected virtual
-		async
-		System.Threading.Tasks.Task<TResponse?>
+	protected virtual async Task<TResponse?>
 		DeleteAsync<TResponse>(string url, string? query = null)
 	{
-		System.Net.Http.HttpResponseMessage? response = null;
+		HttpResponseMessage? response = null;
 
 		try
 		{
@@ -273,7 +271,7 @@ public abstract class ServiceBase : object
 					return result;
 				}
 				// When content type is not valid
-				catch (System.NotSupportedException)
+				catch (NotSupportedException)
 				{
 					var errorMessage =
 						"The content type is not supported!";
@@ -282,7 +280,7 @@ public abstract class ServiceBase : object
 						(type: GetType(), message: errorMessage);
 				}
 				// Invalid JSON
-				catch (System.Text.Json.JsonException)
+				catch (JsonException)
 				{
 					var errorMessage = "Invalid JSON!";
 
@@ -291,7 +289,7 @@ public abstract class ServiceBase : object
 				}
 			}
 		}
-		catch (System.Net.Http.HttpRequestException ex)
+		catch (HttpRequestException ex)
 		{
 			LogsService.AddLog
 				(type: GetType(), message: ex.Message);

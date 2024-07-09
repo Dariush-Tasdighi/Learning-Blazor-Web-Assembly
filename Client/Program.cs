@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Client;
+using System;
 using Services;
 using System.Net.Http;
 using Microsoft.AspNetCore.Components.Web;
@@ -8,11 +9,8 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 var builder =
 	WebAssemblyHostBuilder.CreateDefault(args: args);
 
-builder.RootComponents.Add
-	<Client.App>(selector: "#app");
-
-builder.RootComponents.Add
-	<HeadOutlet>(selector: "head::after");
+builder.RootComponents.Add<App>(selector: "#app");
+builder.RootComponents.Add<HeadOutlet>(selector: "head::after");
 
 //builder.Services.AddScoped<HttpClient>();
 

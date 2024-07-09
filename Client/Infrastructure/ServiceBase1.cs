@@ -1,16 +1,19 @@
-﻿using System.Net.Http.Json;
+﻿using System;
+using System.Net.Http;
+using System.Text.Json;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 
 namespace Infrastructure;
 
 public abstract class ServiceBase1 : object
 {
-	public ServiceBase1
-		(System.Net.Http.HttpClient http) : base()
+	public ServiceBase1(HttpClient http) : base()
 	{
 		Http = http;
 
 		//JsonOptions =
-		//	new System.Text.Json.JsonSerializerOptions
+		//	new JsonSerializerOptions
 		//	{
 		//		PropertyNameCaseInsensitive = true,
 		//	};
@@ -18,17 +21,16 @@ public abstract class ServiceBase1 : object
 		//Http.DefaultRequestHeaders
 	}
 
+	protected HttpClient Http { get; }
+
 	protected string? BaseUrl { get; set; }
 
-	protected System.Net.Http.HttpClient Http { get; }
+	//protected JsonSerializerOptions JsonOptions { get; set; }
 
-	//protected System.Text.Json.JsonSerializerOptions JsonOptions { get; set; }
-
-	protected virtual async
-		System.Threading.Tasks.Task<TResponse?>
+	protected virtual async Task<TResponse?>
 		GetAsync<TResponse>(string? url = null, string? query = null)
 	{
-		System.Net.Http.HttpResponseMessage? response = null;
+		HttpResponseMessage? response = null;
 
 		try
 		{
@@ -63,26 +65,24 @@ public abstract class ServiceBase1 : object
 					return result;
 				}
 				// When content type is not valid
-				catch (System.NotSupportedException)
+				catch (NotSupportedException)
 				{
-					System.Console.WriteLine
-						(value: "The content type is not supported.");
+					Console.WriteLine(value: "The content type is not supported.");
 				}
 				// Invalid JSON
-				catch (System.Text.Json.JsonException)
+				catch (JsonException)
 				{
-					System.Console.WriteLine
-						(value: "Invalid JSON.");
+					Console.WriteLine(value: "Invalid JSON.");
 				}
 			}
 		}
-		catch (System.Net.Http.HttpRequestException ex)
+		catch (HttpRequestException ex)
 		{
-			System.Console.WriteLine(value: ex.Message);
+			Console.WriteLine(value: ex.Message);
 		}
-		catch (System.Exception ex)
+		catch (Exception ex)
 		{
-			System.Console.WriteLine(value: ex.Message);
+			Console.WriteLine(value: ex.Message);
 		}
 		finally
 		{

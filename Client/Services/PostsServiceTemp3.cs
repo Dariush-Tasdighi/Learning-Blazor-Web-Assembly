@@ -1,6 +1,10 @@
-﻿namespace Services;
+﻿using Infrastructure;
+using System.Collections.Generic;
+using ViewModels;
 
-public class PostsServiceTemp3 : Infrastructure.ServiceBase1
+namespace Services;
+
+public class PostsServiceTemp3 : ServiceBase1
 {
 	public PostsServiceTemp3
 		(System.Net.Http.HttpClient http) : base(http: http)
@@ -17,8 +21,7 @@ public class PostsServiceTemp3 : Infrastructure.ServiceBase1
 
 		var result =
 			await
-			GetAsync<System.Collections.Generic
-			.IList<ViewModels.PostViewModel>>(url: url);
+			GetAsync<IList<PostViewModel>>(url: url);
 
 		return result;
 	}
