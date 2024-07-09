@@ -1,50 +1,52 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Services;
+using System.Net.Http;
+using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
 var builder =
-	Microsoft.AspNetCore.Components.WebAssembly
-	.Hosting.WebAssemblyHostBuilder.CreateDefault(args: args);
+	WebAssemblyHostBuilder.CreateDefault(args: args);
 
 builder.RootComponents.Add
 	<Client.App>(selector: "#app");
 
-//builder.Services.AddScoped
-//	<System.Net.Http.HttpClient>();
+builder.RootComponents.Add
+	<HeadOutlet>(selector: "head::after");
+
+//builder.Services.AddScoped<HttpClient>();
 
 //builder.Services.AddScoped
-//	(serviceType: typeof(System.Net.Http.HttpClient));
+//	(serviceType: typeof(HttpClient));
 
 //builder.Services.AddScoped
 //	(implementationFactory: current =>
-//	new System.Net.Http.HttpClient
+//	new HttpClient
 //	{
-//		BaseAddress = new System.Uri
-//			(uriString: builder.HostEnvironment.BaseAddress),
+//		BaseAddress =
+//			new Uri(uriString: builder.HostEnvironment.BaseAddress),
 //	});
 
-builder.RootComponents.Add
-	<Microsoft.AspNetCore.Components.Web.HeadOutlet>(selector: "head::after");
-
-// using Microsoft.Extensions.DependencyInjection;
 builder.Services.AddScoped
 	(implementationFactory: current =>
 	{
 		var httpClient =
-			new System.Net.Http.HttpClient
+			new HttpClient
 			{
-				BaseAddress = new System.Uri
-					(uriString: builder.HostEnvironment.BaseAddress),
+				BaseAddress =
+					new Uri(uriString: builder.HostEnvironment.BaseAddress),
 			};
 
 		return httpClient;
 	});
 
-//builder.Services.AddScoped(serviceType: typeof(Services.PostsServiceTemp1));
-//builder.Services.AddTransient(serviceType: typeof(Services.PostsServiceTemp1));
-//builder.Services.AddSingleton(serviceType: typeof(Services.PostsServiceTemp1));
+//builder.Services.AddScoped(serviceType: typeof(PostsServiceTemp1));
+//builder.Services.AddTransient(serviceType: typeof(PostsServiceTemp1));
+//builder.Services.AddSingleton(serviceType: typeof(PostsServiceTemp1));
 
-builder.Services.AddScoped<Services.PostsServiceTemp1>();
-builder.Services.AddScoped<Services.PostsServiceTemp2>();
-builder.Services.AddScoped<Services.PostsServiceTemp3>();
+builder.Services.AddScoped<PostsServiceTemp1>();
+builder.Services.AddScoped<PostsServiceTemp2>();
+builder.Services.AddScoped<PostsServiceTemp3>();
 
 // نکته مهم
 // دستورات فوق کار نمی‌کنند، مگر آن‌که
@@ -53,9 +55,8 @@ builder.Services.AddScoped<Services.PostsServiceTemp3>();
 // AddScoped
 // ثبت شده باشد
 
-builder.Services.AddScoped<Services.PostsService>();
-
-builder.Services.AddSingleton<Services.LogsService>();
-builder.Services.AddScoped<Services.ApplicationSettingsService>(); // ?????
+builder.Services.AddScoped<PostsService>();
+builder.Services.AddSingleton<LogsService>();
+builder.Services.AddScoped<ApplicationSettingsService>();
 
 await builder.Build().RunAsync();

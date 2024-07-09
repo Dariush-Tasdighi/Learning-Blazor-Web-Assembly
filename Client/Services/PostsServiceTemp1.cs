@@ -1,5 +1,9 @@
-﻿//namespace Client.Services;
+﻿using ViewModels;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
 namespace Services;
+//namespace Client.Services;
 
 public class PostsServiceTemp1 : object
 {
@@ -7,21 +11,18 @@ public class PostsServiceTemp1 : object
 	{
 	}
 
-	public async System.Threading.Tasks.Task
-		<System.Collections.Generic.IList<ViewModels.PostViewModel>?> GetAsync()
+	public async Task<IList<PostViewModel>?> GetAsync()
 	{
-		System.Collections.Generic.List<ViewModels.PostViewModel>? result = null;
+		List<PostViewModel>? result = null;
 
-		await System.Threading.Tasks.Task.Run(() =>
+		await Task.Run(() =>
 		{
-			result =
-				new System.Collections.Generic
-				.List<ViewModels.PostViewModel>();
+			result = [];
 
 			for (var index = 1; index <= 10; index++)
 			{
 				var post =
-					new ViewModels.PostViewModel
+					new PostViewModel
 					{
 						Id = index,
 						Body = $"Body {index}",

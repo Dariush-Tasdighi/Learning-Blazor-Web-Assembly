@@ -1,6 +1,9 @@
 ﻿@page "/learn_4500"
 
-@inject Services.PostsServiceTemp1 PostsService
+@using Services
+@using ViewModels
+
+@inject PostsServiceTemp1 PostsService
 
 @if (List is null)
 {
@@ -72,5 +75,5 @@
 			PostsService.GetAsync();
 	}
 
-	private System.Collections.Generic.IList<ViewModels.PostViewModel>? List { get; set; }
+	private IList<PostViewModel>? List { get; set; }
 }
